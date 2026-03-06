@@ -1,3 +1,7 @@
+export const KALSHI = {
+  BASE_URL: "https://demo-api.kalshi.co",
+};
+
 export const POLYMARKET = {
   BASE_URL: "https://gamma-api.polymarket.com",
   HOST: "https://clob.polymarket.com",

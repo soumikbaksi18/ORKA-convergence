@@ -12,10 +12,12 @@ import {
   type MarketValidation,
 } from "./lib/polymarket.lib.ts";
 import { createOrDeriveApiKey, placeOrder } from "./lib/polymarket-order.lib.ts";
+import { placeKalshiOrder } from "./lib/kalshi-order.lib.ts";
 
 export type Config = {};
 
-export type HTTPInput = {
+type PolymarketInput = {
+  platform: "polymarket";
   marketId: string;
   clobId: string;
   price: number;
@@ -23,18 +25,79 @@ export type HTTPInput = {
   side: "BUY" | "SELL";
 };
 
+type KalshiInput = {
+  platform: "kalshi";
+  ticker: string;
+  action: "buy" | "sell";
+  side: "yes" | "no";
+  count: number;
+  price: number;
+  kalshiAuth: {
+    accessKey: string;
+    accessSignature: string;
+    accessTimestamp: string;
+  };
+};
+
+export type HTTPInput = PolymarketInput | KalshiInput;
+
 export const onHttpTrigger = (
   runtime: Runtime<Config>,
   payload: HTTPPayload,
 ): string => {
   const input = new TextDecoder().decode(payload.input);
   const parsedInput = JSON.parse(input) as HTTPInput;
+  const httpClient = new HTTPClient();
 
-  runtime.log(
-    `HTTP trigger: marketId=${parsedInput.marketId} clobId=${parsedInput.clobId}`,
+  if (parsedInput.platform === "kalshi") {
+    return handleKalshi(runtime, httpClient, parsedInput);
+  } else if (parsedInput.platform === "polymarket") {
+    return handlePolymarket(runtime, httpClient, parsedInput);
+  }
+
+  return JSON.stringify({ success: false, error: `Unknown platform: ${(parsedInput as any).platform}` });
+};
+
+function handleKalshi(
+  runtime: Runtime<Config>,
+  httpClient: HTTPClient,
+  input: KalshiInput,
+): string {
+  runtime.log(`Kalshi order: ticker=${input.ticker} action=${input.action} side=${input.side}`);
+
+  const placeOrderFn = httpClient.sendRequest<[string, string], string>(
+    runtime,
+    (sendRequester, paramsJson, authJson) => {
+      const p = JSON.parse(paramsJson);
+      const a = JSON.parse(authJson);
+      return placeKalshiOrder(sendRequester, p, a);
+    },
+    consensusIdenticalAggregation(),
   );
 
-  const httpClient = new HTTPClient();
+  const orderParams = {
+    ticker: input.ticker,
+    action: input.action,
+    side: input.side,
+    count: input.count,
+    price: input.price,
+  };
+
+  const orderRes = placeOrderFn(
+    JSON.stringify(orderParams),
+    JSON.stringify(input.kalshiAuth),
+  ).result();
+
+  runtime.log(`Kalshi order result: ${orderRes}`);
+  return JSON.stringify({ success: true, order: JSON.parse(orderRes) });
+}
+
+function handlePolymarket(
+  runtime: Runtime<Config>,
+  httpClient: HTTPClient,
+  input: PolymarketInput,
+): string {
+  runtime.log(`HTTP trigger: marketId=${input.marketId} clobId=${input.clobId}`);
 
   // Step 1: Validate market
   const fetchMarket = httpClient.sendRequest<[string, string], string>(
@@ -44,10 +107,7 @@ export const onHttpTrigger = (
     consensusIdenticalAggregation(),
   );
 
-  const marketRes = fetchMarket(
-    parsedInput.marketId,
-    parsedInput.clobId,
-  ).result();
+  const marketRes = fetchMarket(input.marketId, input.clobId).result();
   const validation = JSON.parse(marketRes) as MarketValidation;
 
   runtime.log(`Market validation: ${JSON.stringify(validation)}`);
@@ -89,10 +149,10 @@ export const onHttpTrigger = (
   );
 
   const orderParams = {
-    tokenId: parsedInput.clobId,
-    price: parsedInput.price,
-    size: parsedInput.size,
-    side: parsedInput.side,
+    tokenId: input.clobId,
+    price: input.price,
+    size: input.size,
+    side: input.side,
     negRisk: validation.negRisk,
     tickSize: validation.orderPriceMinTickSize,
   };
@@ -104,9 +164,8 @@ export const onHttpTrigger = (
   ).result();
 
   runtime.log(`Order result: ${orderRes}`);
-
   return JSON.stringify({ success: true, order: JSON.parse(orderRes) });
-};
+}
 
 export const initWorkflow = (_config: Config) => {
   const http = new HTTPCapability();

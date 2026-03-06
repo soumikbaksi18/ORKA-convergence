@@ -1,0 +1,13 @@
+{
+  "platform": "kalshi",
+  "ticker": "KXQUICKSETTLE-26MAR06H1730-2",
+  "action": "buy",
+  "side": "yes",
+  "count": 1,
+  "price": 55,
+  "kalshiAuth": {
+    "accessKey": "9f890cf5-d2b0-4e38-8955-42340b759005",
+    "accessSignature": "kMSiiLIg1mYO7hoUQyDmezCwjMwHkKrpvU1JsM+NHOthsqFdSjVgdmj3o9VsV//RSPTa12H1Abi/JEpcxU0v7RQzroWfqLJBVj3RMdj7STPmlub33rdHNZ1Lp2OoIlYP+Vze78lpV8BtnLDXUomgc1SKLJb98QrasZyP3+ff0ox/xuOa5XBAg+3Ow3dhv8dqFS9S/D76rXILZ0HuUfz/NfjySZbTGY4ooUskipk0C4PkCcuD4eiH4MRDjaZEe9xuh1FoVt2RP50yjOhHwvbY8eWSGZJneHPgYEz9RbOt38a+Q9gD6S7cPPnjL1o2Ru+K5jL/b0X1C2E8j/u8ljsw1A==",
+    "accessTimestamp": "1772835717160"
+  }
+}
