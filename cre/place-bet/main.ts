@@ -1,25 +1,26 @@
-import { CronCapability, handler, Runner, type Runtime } from "@chainlink/cre-sdk";
+import {
+  HTTPCapability,
+  handler,
+  Runner,
+  type Runtime,
+  type HTTPPayload,
+} from "@chainlink/cre-sdk";
 
-export type Config = {
-  schedule: string;
-};
+export type Config = {};
 
-export const onCronTrigger = (runtime: Runtime<Config>): string => {
-  runtime.log("Hello world! Workflow triggered.");
-  return "Hello world!";
+export const onHttpTrigger = (
+  runtime: Runtime<Config>,
+  payload: HTTPPayload,
+): string => {
+  const input = new TextDecoder().decode(payload.input);
+  runtime.log(`HTTP trigger received: ${JSON.parse(input.toString())["key"]}`);
+  return input;
 };
 
 export const initWorkflow = (config: Config) => {
-  const cron = new CronCapability();
+  const http = new HTTPCapability();
 
-  return [
-    handler(
-      cron.trigger(
-        { schedule: config.schedule }
-      ),
-      onCronTrigger
-    ),
-  ];
+  return [handler(http.trigger({ authorizedKeys: [] }), onHttpTrigger)];
 };
 
 export async function main() {
