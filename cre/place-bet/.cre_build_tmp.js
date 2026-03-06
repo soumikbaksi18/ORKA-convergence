@@ -3782,6 +3782,7 @@ var ListSchema = /* @__PURE__ */ messageDesc(file_values_v1_values, 3);
 var DecimalSchema = /* @__PURE__ */ messageDesc(file_values_v1_values, 4);
 var file_sdk_v1alpha_sdk = /* @__PURE__ */ fileDesc("ChVzZGsvdjFhbHBoYS9zZGsucHJvdG8SC3Nkay52MWFscGhhIrQBChVTaW1wbGVDb25zZW5zdXNJbnB1dHMSIQoFdmFsdWUYASABKAsyEC52YWx1ZXMudjEuVmFsdWVIABIPCgVlcnJvchgCIAEoCUgAEjUKC2Rlc2NyaXB0b3JzGAMgASgLMiAuc2RrLnYxYWxwaGEuQ29uc2Vuc3VzRGVzY3JpcHRvchIhCgdkZWZhdWx0GAQgASgLMhAudmFsdWVzLnYxLlZhbHVlQg0KC29ic2VydmF0aW9uIpABCglGaWVsZHNNYXASMgoGZmllbGRzGAEgAygLMiIuc2RrLnYxYWxwaGEuRmllbGRzTWFwLkZpZWxkc0VudHJ5Gk8KC0ZpZWxkc0VudHJ5EgsKA2tleRgBIAEoCRIvCgV2YWx1ZRgCIAEoCzIgLnNkay52MWFscGhhLkNvbnNlbnN1c0Rlc2NyaXB0b3I6AjgBIoYBChNDb25zZW5zdXNEZXNjcmlwdG9yEjMKC2FnZ3JlZ2F0aW9uGAEgASgOMhwuc2RrLnYxYWxwaGEuQWdncmVnYXRpb25UeXBlSAASLAoKZmllbGRzX21hcBgCIAEoCzIWLnNkay52MWFscGhhLkZpZWxkc01hcEgAQgwKCmRlc2NyaXB0b3IiagoNUmVwb3J0UmVxdWVzdBIXCg9lbmNvZGVkX3BheWxvYWQYASABKAwSFAoMZW5jb2Rlcl9uYW1lGAIgASgJEhQKDHNpZ25pbmdfYWxnbxgDIAEoCRIUCgxoYXNoaW5nX2FsZ28YBCABKAkilwEKDlJlcG9ydFJlc3BvbnNlEhUKDWNvbmZpZ19kaWdlc3QYASABKAwSEgoGc2VxX25yGAIgASgEQgIwABIWCg5yZXBvcnRfY29udGV4dBgDIAEoDBISCgpyYXdfcmVwb3J0GAQgASgMEi4KBHNpZ3MYBSADKAsyIC5zZGsudjFhbHBoYS5BdHRyaWJ1dGVkU2lnbmF0dXJlIjsKE0F0dHJpYnV0ZWRTaWduYXR1cmUSEQoJc2lnbmF0dXJlGAEgASgMEhEKCXNpZ25lcl9pZBgCIAEoDSJrChFDYXBhYmlsaXR5UmVxdWVzdBIKCgJpZBgBIAEoCRIlCgdwYXlsb2FkGAIgASgLMhQuZ29vZ2xlLnByb3RvYnVmLkFueRIOCgZtZXRob2QYAyABKAkSEwoLY2FsbGJhY2tfaWQYBCABKAUiWgoSQ2FwYWJpbGl0eVJlc3BvbnNlEicKB3BheWxvYWQYASABKAsyFC5nb29nbGUucHJvdG9idWYuQW55SAASDwoFZXJyb3IYAiABKAlIAEIKCghyZXNwb25zZSJYChNUcmlnZ2VyU3Vic2NyaXB0aW9uEgoKAmlkGAEgASgJEiUKB3BheWxvYWQYAiABKAsyFC5nb29nbGUucHJvdG9idWYuQW55Eg4KBm1ldGhvZBgDIAEoCSJVChpUcmlnZ2VyU3Vic2NyaXB0aW9uUmVxdWVzdBI3Cg1zdWJzY3JpcHRpb25zGAEgAygLMiAuc2RrLnYxYWxwaGEuVHJpZ2dlclN1YnNjcmlwdGlvbiJACgdUcmlnZ2VyEg4KAmlkGAEgASgEQgIwABIlCgdwYXlsb2FkGAIgASgLMhQuZ29vZ2xlLnByb3RvYnVmLkFueSInChhBd2FpdENhcGFiaWxpdGllc1JlcXVlc3QSCwoDaWRzGAEgAygFIrgBChlBd2FpdENhcGFiaWxpdGllc1Jlc3BvbnNlEkgKCXJlc3BvbnNlcxgBIAMoCzI1LnNkay52MWFscGhhLkF3YWl0Q2FwYWJpbGl0aWVzUmVzcG9uc2UuUmVzcG9uc2VzRW50cnkaUQoOUmVzcG9uc2VzRW50cnkSCwoDa2V5GAEgASgFEi4KBXZhbHVlGAIgASgLMh8uc2RrLnYxYWxwaGEuQ2FwYWJpbGl0eVJlc3BvbnNlOgI4ASKgAQoORXhlY3V0ZVJlcXVlc3QSDgoGY29uZmlnGAEgASgMEisKCXN1YnNjcmliZRgCIAEoCzIWLmdvb2dsZS5wcm90b2J1Zi5FbXB0eUgAEicKB3RyaWdnZXIYAyABKAsyFC5zZGsudjFhbHBoYS5UcmlnZ2VySAASHQoRbWF4X3Jlc3BvbnNlX3NpemUYBCABKARCAjAAQgkKB3JlcXVlc3QimQEKD0V4ZWN1dGlvblJlc3VsdBIhCgV2YWx1ZRgBIAEoCzIQLnZhbHVlcy52MS5WYWx1ZUgAEg8KBWVycm9yGAIgASgJSAASSAoVdHJpZ2dlcl9zdWJzY3JpcHRpb25zGAMgASgLMicuc2RrLnYxYWxwaGEuVHJpZ2dlclN1YnNjcmlwdGlvblJlcXVlc3RIAEIICgZyZXN1bHQiVgoRR2V0U2VjcmV0c1JlcXVlc3QSLAoIcmVxdWVzdHMYASADKAsyGi5zZGsudjFhbHBoYS5TZWNyZXRSZXF1ZXN0EhMKC2NhbGxiYWNrX2lkGAIgASgFIiIKE0F3YWl0U2VjcmV0c1JlcXVlc3QSCwoDaWRzGAEgAygFIqsBChRBd2FpdFNlY3JldHNSZXNwb25zZRJDCglyZXNwb25zZXMYASADKAsyMC5zZGsudjFhbHBoYS5Bd2FpdFNlY3JldHNSZXNwb25zZS5SZXNwb25zZXNFbnRyeRpOCg5SZXNwb25zZXNFbnRyeRILCgNrZXkYASABKAUSKwoFdmFsdWUYAiABKAsyHC5zZGsudjFhbHBoYS5TZWNyZXRSZXNwb25zZXM6AjgBIi4KDVNlY3JldFJlcXVlc3QSCgoCaWQYASABKAkSEQoJbmFtZXNwYWNlGAIgASgJIkUKBlNlY3JldBIKCgJpZBgBIAEoCRIRCgluYW1lc3BhY2UYAiABKAkSDQoFb3duZXIYAyABKAkSDQoFdmFsdWUYBCABKAkiSgoLU2VjcmV0RXJyb3ISCgoCaWQYASABKAkSEQoJbmFtZXNwYWNlGAIgASgJEg0KBW93bmVyGAMgASgJEg0KBWVycm9yGAQgASgJIm4KDlNlY3JldFJlc3BvbnNlEiUKBnNlY3JldBgBIAEoCzITLnNkay52MWFscGhhLlNlY3JldEgAEikKBWVycm9yGAIgASgLMhguc2RrLnYxYWxwaGEuU2VjcmV0RXJyb3JIAEIKCghyZXNwb25zZSJBCg9TZWNyZXRSZXNwb25zZXMSLgoJcmVzcG9uc2VzGAEgAygLMhsuc2RrLnYxYWxwaGEuU2VjcmV0UmVzcG9uc2UquAEKD0FnZ3JlZ2F0aW9uVHlwZRIgChxBR0dSRUdBVElPTl9UWVBFX1VOU1BFQ0lGSUVEEAASGwoXQUdHUkVHQVRJT05fVFlQRV9NRURJQU4QARIeChpBR0dSRUdBVElPTl9UWVBFX0lERU5USUNBTBACEiIKHkFHR1JFR0FUSU9OX1RZUEVfQ09NTU9OX1BSRUZJWBADEiIKHkFHR1JFR0FUSU9OX1RZUEVfQ09NTU9OX1NVRkZJWBAEKjkKBE1vZGUSFAoQTU9ERV9VTlNQRUNJRklFRBAAEgwKCE1PREVfRE9OEAESDQoJTU9ERV9OT0RFEAJCaAoPY29tLnNkay52MWFscGhhQghTZGtQcm90b1ABogIDU1hYqgILU2RrLlYxYWxwaGHKAgtTZGtcVjFhbHBoYeICF1Nka1xWMWFscGhhXEdQQk1ldGFkYXRh6gIMU2RrOjpWMWFscGhhYgZwcm90bzM", [file_google_protobuf_any, file_google_protobuf_empty, file_values_v1_values]);
 var SimpleConsensusInputsSchema = /* @__PURE__ */ messageDesc(file_sdk_v1alpha_sdk, 0);
+var ConsensusDescriptorSchema = /* @__PURE__ */ messageDesc(file_sdk_v1alpha_sdk, 2);
 var ReportRequestSchema = /* @__PURE__ */ messageDesc(file_sdk_v1alpha_sdk, 3);
 var ReportResponseSchema = /* @__PURE__ */ messageDesc(file_sdk_v1alpha_sdk, 4);
 var CapabilityRequestSchema = /* @__PURE__ */ messageDesc(file_sdk_v1alpha_sdk, 6);
@@ -8895,6 +8896,33 @@ var defaultLookup = new NetworkLookup({
   testnetBySelector,
   testnetBySelectorByFamily
 });
+function consensusIdenticalAggregation() {
+  return simpleConsensus(AggregationType.IDENTICAL);
+}
+
+class ConsensusImpl {
+  descriptor;
+  defaultValue;
+  constructor(descriptor, defaultValue) {
+    this.descriptor = descriptor;
+    this.defaultValue = defaultValue;
+  }
+  withDefault(t) {
+    return new ConsensusImpl(this.descriptor, t);
+  }
+  _usesUToForceShape(_) {}
+}
+function simpleConsensus(agg) {
+  return new ConsensusImpl(simpleDescriptor(agg));
+}
+function simpleDescriptor(agg) {
+  return create(ConsensusDescriptorSchema, {
+    descriptor: {
+      case: "aggregation",
+      value: agg
+    }
+  });
+}
 
 class Int64 {
   static INT64_MIN = -(2n ** 63n);
@@ -13794,12 +13822,1955 @@ var sendErrorResponse = (error) => {
   }
   hostBindings.sendResponse(payload);
 };
+var POLYMARKET = {
+  BASE_URL: "https://gamma-api.polymarket.com",
+  HOST: "https://clob.polymarket.com",
+  CHAIN_ID: 137,
+  SIGNATURE_TYPE: 0,
+  EXCHANGE: "0x4bFb41d5B3570DeFd03C39a9A4D8dE6Bd8B8982E",
+  NEG_RISK_EXCHANGE: "0xC5d563A36AE78145C45a50134d48A1215220f80a",
+  COLLATERAL_DECIMALS: 6
+};
+var httpRequest = (sendRequester, method, url, options) => {
+  const req = {
+    url,
+    method
+  };
+  if (options?.headers)
+    req.headers = options.headers;
+  if (options?.body)
+    req.body = new TextEncoder().encode(options.body);
+  const res = sendRequester.sendRequest(req).result();
+  if (res.statusCode < 200 || res.statusCode >= 300) {
+    const body = new TextDecoder().decode(res.body);
+    throw new Error(`${method} ${url} returned status ${res.statusCode}: ${body}`);
+  }
+  const text = new TextDecoder().decode(res.body);
+  return text;
+};
+var httpGet = (sendRequester, url, options) => httpRequest(sendRequester, "GET", url, options);
+var httpPost = (sendRequester, url, body, options) => httpRequest(sendRequester, "POST", url, { ...options, body });
+var U32_MASK64 = /* @__PURE__ */ BigInt(2 ** 32 - 1);
+var _32n = /* @__PURE__ */ BigInt(32);
+function fromBig(n, le = false) {
+  if (le)
+    return { h: Number(n & U32_MASK64), l: Number(n >> _32n & U32_MASK64) };
+  return { h: Number(n >> _32n & U32_MASK64) | 0, l: Number(n & U32_MASK64) | 0 };
+}
+function split(lst, le = false) {
+  const len2 = lst.length;
+  let Ah = new Uint32Array(len2);
+  let Al = new Uint32Array(len2);
+  for (let i2 = 0;i2 < len2; i2++) {
+    const { h, l } = fromBig(lst[i2], le);
+    [Ah[i2], Al[i2]] = [h, l];
+  }
+  return [Ah, Al];
+}
+var shrSH = (h, _l, s) => h >>> s;
+var shrSL = (h, l, s) => h << 32 - s | l >>> s;
+var rotrSH = (h, l, s) => h >>> s | l << 32 - s;
+var rotrSL = (h, l, s) => h << 32 - s | l >>> s;
+var rotrBH = (h, l, s) => h << 64 - s | l >>> s - 32;
+var rotrBL = (h, l, s) => h >>> s - 32 | l << 64 - s;
+var rotlSH = (h, l, s) => h << s | l >>> 32 - s;
+var rotlSL = (h, l, s) => l << s | h >>> 32 - s;
+var rotlBH = (h, l, s) => l << s - 32 | h >>> 64 - s;
+var rotlBL = (h, l, s) => h << s - 32 | l >>> 64 - s;
+function add(Ah, Al, Bh, Bl) {
+  const l = (Al >>> 0) + (Bl >>> 0);
+  return { h: Ah + Bh + (l / 2 ** 32 | 0) | 0, l: l | 0 };
+}
+var add3L = (Al, Bl, Cl) => (Al >>> 0) + (Bl >>> 0) + (Cl >>> 0);
+var add3H = (low, Ah, Bh, Ch) => Ah + Bh + Ch + (low / 2 ** 32 | 0) | 0;
+var add4L = (Al, Bl, Cl, Dl) => (Al >>> 0) + (Bl >>> 0) + (Cl >>> 0) + (Dl >>> 0);
+var add4H = (low, Ah, Bh, Ch, Dh) => Ah + Bh + Ch + Dh + (low / 2 ** 32 | 0) | 0;
+var add5L = (Al, Bl, Cl, Dl, El) => (Al >>> 0) + (Bl >>> 0) + (Cl >>> 0) + (Dl >>> 0) + (El >>> 0);
+var add5H = (low, Ah, Bh, Ch, Dh, Eh) => Ah + Bh + Ch + Dh + Eh + (low / 2 ** 32 | 0) | 0;
+/*! noble-hashes - MIT License (c) 2022 Paul Miller (paulmillr.com) */
+function isBytes(a) {
+  return a instanceof Uint8Array || ArrayBuffer.isView(a) && a.constructor.name === "Uint8Array";
+}
+function anumber(n, title = "") {
+  if (!Number.isSafeInteger(n) || n < 0) {
+    const prefix = title && `"${title}" `;
+    throw new Error(`${prefix}expected integer >= 0, got ${n}`);
+  }
+}
+function abytes(value2, length, title = "") {
+  const bytes = isBytes(value2);
+  const len2 = value2?.length;
+  const needsLen = length !== undefined;
+  if (!bytes || needsLen && len2 !== length) {
+    const prefix = title && `"${title}" `;
+    const ofLen = needsLen ? ` of length ${length}` : "";
+    const got = bytes ? `length=${len2}` : `type=${typeof value2}`;
+    throw new Error(prefix + "expected Uint8Array" + ofLen + ", got " + got);
+  }
+  return value2;
+}
+function ahash(h) {
+  if (typeof h !== "function" || typeof h.create !== "function")
+    throw new Error("Hash must wrapped by utils.createHasher");
+  anumber(h.outputLen);
+  anumber(h.blockLen);
+}
+function aexists(instance, checkFinished = true) {
+  if (instance.destroyed)
+    throw new Error("Hash instance has been destroyed");
+  if (checkFinished && instance.finished)
+    throw new Error("Hash#digest() has already been called");
+}
+function aoutput(out, instance) {
+  abytes(out, undefined, "digestInto() output");
+  const min = instance.outputLen;
+  if (out.length < min) {
+    throw new Error('"digestInto() output" expected to be of length >=' + min);
+  }
+}
+function u32(arr) {
+  return new Uint32Array(arr.buffer, arr.byteOffset, Math.floor(arr.byteLength / 4));
+}
+function clean(...arrays) {
+  for (let i2 = 0;i2 < arrays.length; i2++) {
+    arrays[i2].fill(0);
+  }
+}
+function createView(arr) {
+  return new DataView(arr.buffer, arr.byteOffset, arr.byteLength);
+}
+function rotr(word, shift) {
+  return word << 32 - shift | word >>> shift;
+}
+var isLE = /* @__PURE__ */ (() => new Uint8Array(new Uint32Array([287454020]).buffer)[0] === 68)();
+function byteSwap(word) {
+  return word << 24 & 4278190080 | word << 8 & 16711680 | word >>> 8 & 65280 | word >>> 24 & 255;
+}
+function byteSwap32(arr) {
+  for (let i2 = 0;i2 < arr.length; i2++) {
+    arr[i2] = byteSwap(arr[i2]);
+  }
+  return arr;
+}
+var swap32IfBE = isLE ? (u) => u : byteSwap32;
+var hasHexBuiltin = /* @__PURE__ */ (() => typeof Uint8Array.from([]).toHex === "function" && typeof Uint8Array.fromHex === "function")();
+var hexes = /* @__PURE__ */ Array.from({ length: 256 }, (_, i2) => i2.toString(16).padStart(2, "0"));
+function bytesToHex(bytes) {
+  abytes(bytes);
+  if (hasHexBuiltin)
+    return bytes.toHex();
+  let hex = "";
+  for (let i2 = 0;i2 < bytes.length; i2++) {
+    hex += hexes[bytes[i2]];
+  }
+  return hex;
+}
+var asciis = { _0: 48, _9: 57, A: 65, F: 70, a: 97, f: 102 };
+function asciiToBase16(ch) {
+  if (ch >= asciis._0 && ch <= asciis._9)
+    return ch - asciis._0;
+  if (ch >= asciis.A && ch <= asciis.F)
+    return ch - (asciis.A - 10);
+  if (ch >= asciis.a && ch <= asciis.f)
+    return ch - (asciis.a - 10);
+  return;
+}
+function hexToBytes2(hex) {
+  if (typeof hex !== "string")
+    throw new Error("hex string expected, got " + typeof hex);
+  if (hasHexBuiltin)
+    return Uint8Array.fromHex(hex);
+  const hl = hex.length;
+  const al = hl / 2;
+  if (hl % 2)
+    throw new Error("hex string expected, got unpadded hex of length " + hl);
+  const array = new Uint8Array(al);
+  for (let ai = 0, hi = 0;ai < al; ai++, hi += 2) {
+    const n1 = asciiToBase16(hex.charCodeAt(hi));
+    const n2 = asciiToBase16(hex.charCodeAt(hi + 1));
+    if (n1 === undefined || n2 === undefined) {
+      const char = hex[hi] + hex[hi + 1];
+      throw new Error('hex string expected, got non-hex character "' + char + '" at index ' + hi);
+    }
+    array[ai] = n1 * 16 + n2;
+  }
+  return array;
+}
+function createHasher(hashCons, info = {}) {
+  const hashC = (msg, opts) => hashCons(opts).update(msg).digest();
+  const tmp = hashCons(undefined);
+  hashC.outputLen = tmp.outputLen;
+  hashC.blockLen = tmp.blockLen;
+  hashC.create = (opts) => hashCons(opts);
+  Object.assign(hashC, info);
+  return Object.freeze(hashC);
+}
+var oidNist = (suffix) => ({
+  oid: Uint8Array.from([6, 9, 96, 134, 72, 1, 101, 3, 4, 2, suffix])
+});
+var _0n = BigInt(0);
+var _1n = BigInt(1);
+var _2n = BigInt(2);
+var _7n = BigInt(7);
+var _256n = BigInt(256);
+var _0x71n = BigInt(113);
+var SHA3_PI = [];
+var SHA3_ROTL = [];
+var _SHA3_IOTA = [];
+for (let round = 0, R = _1n, x = 1, y = 0;round < 24; round++) {
+  [x, y] = [y, (2 * x + 3 * y) % 5];
+  SHA3_PI.push(2 * (5 * y + x));
+  SHA3_ROTL.push((round + 1) * (round + 2) / 2 % 64);
+  let t = _0n;
+  for (let j = 0;j < 7; j++) {
+    R = (R << _1n ^ (R >> _7n) * _0x71n) % _256n;
+    if (R & _2n)
+      t ^= _1n << (_1n << BigInt(j)) - _1n;
+  }
+  _SHA3_IOTA.push(t);
+}
+var IOTAS = split(_SHA3_IOTA, true);
+var SHA3_IOTA_H = IOTAS[0];
+var SHA3_IOTA_L = IOTAS[1];
+var rotlH = (h, l, s) => s > 32 ? rotlBH(h, l, s) : rotlSH(h, l, s);
+var rotlL = (h, l, s) => s > 32 ? rotlBL(h, l, s) : rotlSL(h, l, s);
+function keccakP(s, rounds = 24) {
+  const B = new Uint32Array(5 * 2);
+  for (let round = 24 - rounds;round < 24; round++) {
+    for (let x = 0;x < 10; x++)
+      B[x] = s[x] ^ s[x + 10] ^ s[x + 20] ^ s[x + 30] ^ s[x + 40];
+    for (let x = 0;x < 10; x += 2) {
+      const idx1 = (x + 8) % 10;
+      const idx0 = (x + 2) % 10;
+      const B0 = B[idx0];
+      const B1 = B[idx0 + 1];
+      const Th = rotlH(B0, B1, 1) ^ B[idx1];
+      const Tl = rotlL(B0, B1, 1) ^ B[idx1 + 1];
+      for (let y = 0;y < 50; y += 10) {
+        s[x + y] ^= Th;
+        s[x + y + 1] ^= Tl;
+      }
+    }
+    let curH = s[2];
+    let curL = s[3];
+    for (let t = 0;t < 24; t++) {
+      const shift = SHA3_ROTL[t];
+      const Th = rotlH(curH, curL, shift);
+      const Tl = rotlL(curH, curL, shift);
+      const PI = SHA3_PI[t];
+      curH = s[PI];
+      curL = s[PI + 1];
+      s[PI] = Th;
+      s[PI + 1] = Tl;
+    }
+    for (let y = 0;y < 50; y += 10) {
+      for (let x = 0;x < 10; x++)
+        B[x] = s[y + x];
+      for (let x = 0;x < 10; x++)
+        s[y + x] ^= ~B[(x + 2) % 10] & B[(x + 4) % 10];
+    }
+    s[0] ^= SHA3_IOTA_H[round];
+    s[1] ^= SHA3_IOTA_L[round];
+  }
+  clean(B);
+}
+
+class Keccak {
+  state;
+  pos = 0;
+  posOut = 0;
+  finished = false;
+  state32;
+  destroyed = false;
+  blockLen;
+  suffix;
+  outputLen;
+  enableXOF = false;
+  rounds;
+  constructor(blockLen, suffix, outputLen, enableXOF = false, rounds = 24) {
+    this.blockLen = blockLen;
+    this.suffix = suffix;
+    this.outputLen = outputLen;
+    this.enableXOF = enableXOF;
+    this.rounds = rounds;
+    anumber(outputLen, "outputLen");
+    if (!(0 < blockLen && blockLen < 200))
+      throw new Error("only keccak-f1600 function is supported");
+    this.state = new Uint8Array(200);
+    this.state32 = u32(this.state);
+  }
+  clone() {
+    return this._cloneInto();
+  }
+  keccak() {
+    swap32IfBE(this.state32);
+    keccakP(this.state32, this.rounds);
+    swap32IfBE(this.state32);
+    this.posOut = 0;
+    this.pos = 0;
+  }
+  update(data) {
+    aexists(this);
+    abytes(data);
+    const { blockLen, state } = this;
+    const len2 = data.length;
+    for (let pos = 0;pos < len2; ) {
+      const take = Math.min(blockLen - this.pos, len2 - pos);
+      for (let i2 = 0;i2 < take; i2++)
+        state[this.pos++] ^= data[pos++];
+      if (this.pos === blockLen)
+        this.keccak();
+    }
+    return this;
+  }
+  finish() {
+    if (this.finished)
+      return;
+    this.finished = true;
+    const { state, suffix, pos, blockLen } = this;
+    state[pos] ^= suffix;
+    if ((suffix & 128) !== 0 && pos === blockLen - 1)
+      this.keccak();
+    state[blockLen - 1] ^= 128;
+    this.keccak();
+  }
+  writeInto(out) {
+    aexists(this, false);
+    abytes(out);
+    this.finish();
+    const bufferOut = this.state;
+    const { blockLen } = this;
+    for (let pos = 0, len2 = out.length;pos < len2; ) {
+      if (this.posOut >= blockLen)
+        this.keccak();
+      const take = Math.min(blockLen - this.posOut, len2 - pos);
+      out.set(bufferOut.subarray(this.posOut, this.posOut + take), pos);
+      this.posOut += take;
+      pos += take;
+    }
+    return out;
+  }
+  xofInto(out) {
+    if (!this.enableXOF)
+      throw new Error("XOF is not possible for this instance");
+    return this.writeInto(out);
+  }
+  xof(bytes) {
+    anumber(bytes);
+    return this.xofInto(new Uint8Array(bytes));
+  }
+  digestInto(out) {
+    aoutput(out, this);
+    if (this.finished)
+      throw new Error("digest() was already called");
+    this.writeInto(out);
+    this.destroy();
+    return out;
+  }
+  digest() {
+    return this.digestInto(new Uint8Array(this.outputLen));
+  }
+  destroy() {
+    this.destroyed = true;
+    clean(this.state);
+  }
+  _cloneInto(to) {
+    const { blockLen, suffix, outputLen, rounds, enableXOF } = this;
+    to ||= new Keccak(blockLen, suffix, outputLen, enableXOF, rounds);
+    to.state32.set(this.state32);
+    to.pos = this.pos;
+    to.posOut = this.posOut;
+    to.finished = this.finished;
+    to.rounds = rounds;
+    to.suffix = suffix;
+    to.outputLen = outputLen;
+    to.enableXOF = enableXOF;
+    to.destroyed = this.destroyed;
+    return to;
+  }
+}
+var genKeccak = (suffix, blockLen, outputLen, info = {}) => createHasher(() => new Keccak(blockLen, suffix, outputLen), info);
+var keccak_256 = /* @__PURE__ */ genKeccak(1, 136, 32);
+
+class _HMAC {
+  oHash;
+  iHash;
+  blockLen;
+  outputLen;
+  finished = false;
+  destroyed = false;
+  constructor(hash, key) {
+    ahash(hash);
+    abytes(key, undefined, "key");
+    this.iHash = hash.create();
+    if (typeof this.iHash.update !== "function")
+      throw new Error("Expected instance of class which extends utils.Hash");
+    this.blockLen = this.iHash.blockLen;
+    this.outputLen = this.iHash.outputLen;
+    const blockLen = this.blockLen;
+    const pad = new Uint8Array(blockLen);
+    pad.set(key.length > blockLen ? hash.create().update(key).digest() : key);
+    for (let i2 = 0;i2 < pad.length; i2++)
+      pad[i2] ^= 54;
+    this.iHash.update(pad);
+    this.oHash = hash.create();
+    for (let i2 = 0;i2 < pad.length; i2++)
+      pad[i2] ^= 54 ^ 92;
+    this.oHash.update(pad);
+    clean(pad);
+  }
+  update(buf) {
+    aexists(this);
+    this.iHash.update(buf);
+    return this;
+  }
+  digestInto(out) {
+    aexists(this);
+    abytes(out, this.outputLen, "output");
+    this.finished = true;
+    this.iHash.digestInto(out);
+    this.oHash.update(out);
+    this.oHash.digestInto(out);
+    this.destroy();
+  }
+  digest() {
+    const out = new Uint8Array(this.oHash.outputLen);
+    this.digestInto(out);
+    return out;
+  }
+  _cloneInto(to) {
+    to ||= Object.create(Object.getPrototypeOf(this), {});
+    const { oHash, iHash, finished, destroyed, blockLen, outputLen } = this;
+    to = to;
+    to.finished = finished;
+    to.destroyed = destroyed;
+    to.blockLen = blockLen;
+    to.outputLen = outputLen;
+    to.oHash = oHash._cloneInto(to.oHash);
+    to.iHash = iHash._cloneInto(to.iHash);
+    return to;
+  }
+  clone() {
+    return this._cloneInto();
+  }
+  destroy() {
+    this.destroyed = true;
+    this.oHash.destroy();
+    this.iHash.destroy();
+  }
+}
+var hmac = (hash, key, message) => new _HMAC(hash, key).update(message).digest();
+hmac.create = (hash, key) => new _HMAC(hash, key);
+function Chi(a, b, c) {
+  return a & b ^ ~a & c;
+}
+function Maj(a, b, c) {
+  return a & b ^ a & c ^ b & c;
+}
+
+class HashMD {
+  blockLen;
+  outputLen;
+  padOffset;
+  isLE;
+  buffer;
+  view;
+  finished = false;
+  length = 0;
+  pos = 0;
+  destroyed = false;
+  constructor(blockLen, outputLen, padOffset, isLE2) {
+    this.blockLen = blockLen;
+    this.outputLen = outputLen;
+    this.padOffset = padOffset;
+    this.isLE = isLE2;
+    this.buffer = new Uint8Array(blockLen);
+    this.view = createView(this.buffer);
+  }
+  update(data) {
+    aexists(this);
+    abytes(data);
+    const { view, buffer, blockLen } = this;
+    const len2 = data.length;
+    for (let pos = 0;pos < len2; ) {
+      const take = Math.min(blockLen - this.pos, len2 - pos);
+      if (take === blockLen) {
+        const dataView = createView(data);
+        for (;blockLen <= len2 - pos; pos += blockLen)
+          this.process(dataView, pos);
+        continue;
+      }
+      buffer.set(data.subarray(pos, pos + take), this.pos);
+      this.pos += take;
+      pos += take;
+      if (this.pos === blockLen) {
+        this.process(view, 0);
+        this.pos = 0;
+      }
+    }
+    this.length += data.length;
+    this.roundClean();
+    return this;
+  }
+  digestInto(out) {
+    aexists(this);
+    aoutput(out, this);
+    this.finished = true;
+    const { buffer, view, blockLen, isLE: isLE2 } = this;
+    let { pos } = this;
+    buffer[pos++] = 128;
+    clean(this.buffer.subarray(pos));
+    if (this.padOffset > blockLen - pos) {
+      this.process(view, 0);
+      pos = 0;
+    }
+    for (let i2 = pos;i2 < blockLen; i2++)
+      buffer[i2] = 0;
+    view.setBigUint64(blockLen - 8, BigInt(this.length * 8), isLE2);
+    this.process(view, 0);
+    const oview = createView(out);
+    const len2 = this.outputLen;
+    if (len2 % 4)
+      throw new Error("_sha2: outputLen must be aligned to 32bit");
+    const outLen = len2 / 4;
+    const state = this.get();
+    if (outLen > state.length)
+      throw new Error("_sha2: outputLen bigger than state");
+    for (let i2 = 0;i2 < outLen; i2++)
+      oview.setUint32(4 * i2, state[i2], isLE2);
+  }
+  digest() {
+    const { buffer, outputLen } = this;
+    this.digestInto(buffer);
+    const res = buffer.slice(0, outputLen);
+    this.destroy();
+    return res;
+  }
+  _cloneInto(to) {
+    to ||= new this.constructor;
+    to.set(...this.get());
+    const { blockLen, buffer, length, finished, destroyed, pos } = this;
+    to.destroyed = destroyed;
+    to.finished = finished;
+    to.length = length;
+    to.pos = pos;
+    if (length % blockLen)
+      to.buffer.set(buffer);
+    return to;
+  }
+  clone() {
+    return this._cloneInto();
+  }
+}
+var SHA256_IV = /* @__PURE__ */ Uint32Array.from([
+  1779033703,
+  3144134277,
+  1013904242,
+  2773480762,
+  1359893119,
+  2600822924,
+  528734635,
+  1541459225
+]);
+var SHA224_IV = /* @__PURE__ */ Uint32Array.from([
+  3238371032,
+  914150663,
+  812702999,
+  4144912697,
+  4290775857,
+  1750603025,
+  1694076839,
+  3204075428
+]);
+var SHA384_IV = /* @__PURE__ */ Uint32Array.from([
+  3418070365,
+  3238371032,
+  1654270250,
+  914150663,
+  2438529370,
+  812702999,
+  355462360,
+  4144912697,
+  1731405415,
+  4290775857,
+  2394180231,
+  1750603025,
+  3675008525,
+  1694076839,
+  1203062813,
+  3204075428
+]);
+var SHA512_IV = /* @__PURE__ */ Uint32Array.from([
+  1779033703,
+  4089235720,
+  3144134277,
+  2227873595,
+  1013904242,
+  4271175723,
+  2773480762,
+  1595750129,
+  1359893119,
+  2917565137,
+  2600822924,
+  725511199,
+  528734635,
+  4215389547,
+  1541459225,
+  327033209
+]);
+var SHA256_K = /* @__PURE__ */ Uint32Array.from([
+  1116352408,
+  1899447441,
+  3049323471,
+  3921009573,
+  961987163,
+  1508970993,
+  2453635748,
+  2870763221,
+  3624381080,
+  310598401,
+  607225278,
+  1426881987,
+  1925078388,
+  2162078206,
+  2614888103,
+  3248222580,
+  3835390401,
+  4022224774,
+  264347078,
+  604807628,
+  770255983,
+  1249150122,
+  1555081692,
+  1996064986,
+  2554220882,
+  2821834349,
+  2952996808,
+  3210313671,
+  3336571891,
+  3584528711,
+  113926993,
+  338241895,
+  666307205,
+  773529912,
+  1294757372,
+  1396182291,
+  1695183700,
+  1986661051,
+  2177026350,
+  2456956037,
+  2730485921,
+  2820302411,
+  3259730800,
+  3345764771,
+  3516065817,
+  3600352804,
+  4094571909,
+  275423344,
+  430227734,
+  506948616,
+  659060556,
+  883997877,
+  958139571,
+  1322822218,
+  1537002063,
+  1747873779,
+  1955562222,
+  2024104815,
+  2227730452,
+  2361852424,
+  2428436474,
+  2756734187,
+  3204031479,
+  3329325298
+]);
+var SHA256_W = /* @__PURE__ */ new Uint32Array(64);
+
+class SHA2_32B extends HashMD {
+  constructor(outputLen) {
+    super(64, outputLen, 8, false);
+  }
+  get() {
+    const { A, B, C, D, E: E2, F, G, H } = this;
+    return [A, B, C, D, E2, F, G, H];
+  }
+  set(A, B, C, D, E2, F, G, H) {
+    this.A = A | 0;
+    this.B = B | 0;
+    this.C = C | 0;
+    this.D = D | 0;
+    this.E = E2 | 0;
+    this.F = F | 0;
+    this.G = G | 0;
+    this.H = H | 0;
+  }
+  process(view, offset) {
+    for (let i2 = 0;i2 < 16; i2++, offset += 4)
+      SHA256_W[i2] = view.getUint32(offset, false);
+    for (let i2 = 16;i2 < 64; i2++) {
+      const W15 = SHA256_W[i2 - 15];
+      const W2 = SHA256_W[i2 - 2];
+      const s0 = rotr(W15, 7) ^ rotr(W15, 18) ^ W15 >>> 3;
+      const s1 = rotr(W2, 17) ^ rotr(W2, 19) ^ W2 >>> 10;
+      SHA256_W[i2] = s1 + SHA256_W[i2 - 7] + s0 + SHA256_W[i2 - 16] | 0;
+    }
+    let { A, B, C, D, E: E2, F, G, H } = this;
+    for (let i2 = 0;i2 < 64; i2++) {
+      const sigma1 = rotr(E2, 6) ^ rotr(E2, 11) ^ rotr(E2, 25);
+      const T1 = H + sigma1 + Chi(E2, F, G) + SHA256_K[i2] + SHA256_W[i2] | 0;
+      const sigma0 = rotr(A, 2) ^ rotr(A, 13) ^ rotr(A, 22);
+      const T2 = sigma0 + Maj(A, B, C) | 0;
+      H = G;
+      G = F;
+      F = E2;
+      E2 = D + T1 | 0;
+      D = C;
+      C = B;
+      B = A;
+      A = T1 + T2 | 0;
+    }
+    A = A + this.A | 0;
+    B = B + this.B | 0;
+    C = C + this.C | 0;
+    D = D + this.D | 0;
+    E2 = E2 + this.E | 0;
+    F = F + this.F | 0;
+    G = G + this.G | 0;
+    H = H + this.H | 0;
+    this.set(A, B, C, D, E2, F, G, H);
+  }
+  roundClean() {
+    clean(SHA256_W);
+  }
+  destroy() {
+    this.set(0, 0, 0, 0, 0, 0, 0, 0);
+    clean(this.buffer);
+  }
+}
+
+class _SHA256 extends SHA2_32B {
+  A = SHA256_IV[0] | 0;
+  B = SHA256_IV[1] | 0;
+  C = SHA256_IV[2] | 0;
+  D = SHA256_IV[3] | 0;
+  E = SHA256_IV[4] | 0;
+  F = SHA256_IV[5] | 0;
+  G = SHA256_IV[6] | 0;
+  H = SHA256_IV[7] | 0;
+  constructor() {
+    super(32);
+  }
+}
+
+class _SHA224 extends SHA2_32B {
+  A = SHA224_IV[0] | 0;
+  B = SHA224_IV[1] | 0;
+  C = SHA224_IV[2] | 0;
+  D = SHA224_IV[3] | 0;
+  E = SHA224_IV[4] | 0;
+  F = SHA224_IV[5] | 0;
+  G = SHA224_IV[6] | 0;
+  H = SHA224_IV[7] | 0;
+  constructor() {
+    super(28);
+  }
+}
+var K512 = /* @__PURE__ */ (() => split([
+  "0x428a2f98d728ae22",
+  "0x7137449123ef65cd",
+  "0xb5c0fbcfec4d3b2f",
+  "0xe9b5dba58189dbbc",
+  "0x3956c25bf348b538",
+  "0x59f111f1b605d019",
+  "0x923f82a4af194f9b",
+  "0xab1c5ed5da6d8118",
+  "0xd807aa98a3030242",
+  "0x12835b0145706fbe",
+  "0x243185be4ee4b28c",
+  "0x550c7dc3d5ffb4e2",
+  "0x72be5d74f27b896f",
+  "0x80deb1fe3b1696b1",
+  "0x9bdc06a725c71235",
+  "0xc19bf174cf692694",
+  "0xe49b69c19ef14ad2",
+  "0xefbe4786384f25e3",
+  "0x0fc19dc68b8cd5b5",
+  "0x240ca1cc77ac9c65",
+  "0x2de92c6f592b0275",
+  "0x4a7484aa6ea6e483",
+  "0x5cb0a9dcbd41fbd4",
+  "0x76f988da831153b5",
+  "0x983e5152ee66dfab",
+  "0xa831c66d2db43210",
+  "0xb00327c898fb213f",
+  "0xbf597fc7beef0ee4",
+  "0xc6e00bf33da88fc2",
+  "0xd5a79147930aa725",
+  "0x06ca6351e003826f",
+  "0x142929670a0e6e70",
+  "0x27b70a8546d22ffc",
+  "0x2e1b21385c26c926",
+  "0x4d2c6dfc5ac42aed",
+  "0x53380d139d95b3df",
+  "0x650a73548baf63de",
+  "0x766a0abb3c77b2a8",
+  "0x81c2c92e47edaee6",
+  "0x92722c851482353b",
+  "0xa2bfe8a14cf10364",
+  "0xa81a664bbc423001",
+  "0xc24b8b70d0f89791",
+  "0xc76c51a30654be30",
+  "0xd192e819d6ef5218",
+  "0xd69906245565a910",
+  "0xf40e35855771202a",
+  "0x106aa07032bbd1b8",
+  "0x19a4c116b8d2d0c8",
+  "0x1e376c085141ab53",
+  "0x2748774cdf8eeb99",
+  "0x34b0bcb5e19b48a8",
+  "0x391c0cb3c5c95a63",
+  "0x4ed8aa4ae3418acb",
+  "0x5b9cca4f7763e373",
+  "0x682e6ff3d6b2b8a3",
+  "0x748f82ee5defb2fc",
+  "0x78a5636f43172f60",
+  "0x84c87814a1f0ab72",
+  "0x8cc702081a6439ec",
+  "0x90befffa23631e28",
+  "0xa4506cebde82bde9",
+  "0xbef9a3f7b2c67915",
+  "0xc67178f2e372532b",
+  "0xca273eceea26619c",
+  "0xd186b8c721c0c207",
+  "0xeada7dd6cde0eb1e",
+  "0xf57d4f7fee6ed178",
+  "0x06f067aa72176fba",
+  "0x0a637dc5a2c898a6",
+  "0x113f9804bef90dae",
+  "0x1b710b35131c471b",
+  "0x28db77f523047d84",
+  "0x32caab7b40c72493",
+  "0x3c9ebe0a15c9bebc",
+  "0x431d67c49c100d4c",
+  "0x4cc5d4becb3e42b6",
+  "0x597f299cfc657e2a",
+  "0x5fcb6fab3ad6faec",
+  "0x6c44198c4a475817"
+].map((n) => BigInt(n))))();
+var SHA512_Kh = /* @__PURE__ */ (() => K512[0])();
+var SHA512_Kl = /* @__PURE__ */ (() => K512[1])();
+var SHA512_W_H = /* @__PURE__ */ new Uint32Array(80);
+var SHA512_W_L = /* @__PURE__ */ new Uint32Array(80);
+
+class SHA2_64B extends HashMD {
+  constructor(outputLen) {
+    super(128, outputLen, 16, false);
+  }
+  get() {
+    const { Ah, Al, Bh, Bl, Ch, Cl, Dh, Dl, Eh, El, Fh, Fl, Gh, Gl, Hh, Hl } = this;
+    return [Ah, Al, Bh, Bl, Ch, Cl, Dh, Dl, Eh, El, Fh, Fl, Gh, Gl, Hh, Hl];
+  }
+  set(Ah, Al, Bh, Bl, Ch, Cl, Dh, Dl, Eh, El, Fh, Fl, Gh, Gl, Hh, Hl) {
+    this.Ah = Ah | 0;
+    this.Al = Al | 0;
+    this.Bh = Bh | 0;
+    this.Bl = Bl | 0;
+    this.Ch = Ch | 0;
+    this.Cl = Cl | 0;
+    this.Dh = Dh | 0;
+    this.Dl = Dl | 0;
+    this.Eh = Eh | 0;
+    this.El = El | 0;
+    this.Fh = Fh | 0;
+    this.Fl = Fl | 0;
+    this.Gh = Gh | 0;
+    this.Gl = Gl | 0;
+    this.Hh = Hh | 0;
+    this.Hl = Hl | 0;
+  }
+  process(view, offset) {
+    for (let i2 = 0;i2 < 16; i2++, offset += 4) {
+      SHA512_W_H[i2] = view.getUint32(offset);
+      SHA512_W_L[i2] = view.getUint32(offset += 4);
+    }
+    for (let i2 = 16;i2 < 80; i2++) {
+      const W15h = SHA512_W_H[i2 - 15] | 0;
+      const W15l = SHA512_W_L[i2 - 15] | 0;
+      const s0h = rotrSH(W15h, W15l, 1) ^ rotrSH(W15h, W15l, 8) ^ shrSH(W15h, W15l, 7);
+      const s0l = rotrSL(W15h, W15l, 1) ^ rotrSL(W15h, W15l, 8) ^ shrSL(W15h, W15l, 7);
+      const W2h = SHA512_W_H[i2 - 2] | 0;
+      const W2l = SHA512_W_L[i2 - 2] | 0;
+      const s1h = rotrSH(W2h, W2l, 19) ^ rotrBH(W2h, W2l, 61) ^ shrSH(W2h, W2l, 6);
+      const s1l = rotrSL(W2h, W2l, 19) ^ rotrBL(W2h, W2l, 61) ^ shrSL(W2h, W2l, 6);
+      const SUMl = add4L(s0l, s1l, SHA512_W_L[i2 - 7], SHA512_W_L[i2 - 16]);
+      const SUMh = add4H(SUMl, s0h, s1h, SHA512_W_H[i2 - 7], SHA512_W_H[i2 - 16]);
+      SHA512_W_H[i2] = SUMh | 0;
+      SHA512_W_L[i2] = SUMl | 0;
+    }
+    let { Ah, Al, Bh, Bl, Ch, Cl, Dh, Dl, Eh, El, Fh, Fl, Gh, Gl, Hh, Hl } = this;
+    for (let i2 = 0;i2 < 80; i2++) {
+      const sigma1h = rotrSH(Eh, El, 14) ^ rotrSH(Eh, El, 18) ^ rotrBH(Eh, El, 41);
+      const sigma1l = rotrSL(Eh, El, 14) ^ rotrSL(Eh, El, 18) ^ rotrBL(Eh, El, 41);
+      const CHIh = Eh & Fh ^ ~Eh & Gh;
+      const CHIl = El & Fl ^ ~El & Gl;
+      const T1ll = add5L(Hl, sigma1l, CHIl, SHA512_Kl[i2], SHA512_W_L[i2]);
+      const T1h = add5H(T1ll, Hh, sigma1h, CHIh, SHA512_Kh[i2], SHA512_W_H[i2]);
+      const T1l = T1ll | 0;
+      const sigma0h = rotrSH(Ah, Al, 28) ^ rotrBH(Ah, Al, 34) ^ rotrBH(Ah, Al, 39);
+      const sigma0l = rotrSL(Ah, Al, 28) ^ rotrBL(Ah, Al, 34) ^ rotrBL(Ah, Al, 39);
+      const MAJh = Ah & Bh ^ Ah & Ch ^ Bh & Ch;
+      const MAJl = Al & Bl ^ Al & Cl ^ Bl & Cl;
+      Hh = Gh | 0;
+      Hl = Gl | 0;
+      Gh = Fh | 0;
+      Gl = Fl | 0;
+      Fh = Eh | 0;
+      Fl = El | 0;
+      ({ h: Eh, l: El } = add(Dh | 0, Dl | 0, T1h | 0, T1l | 0));
+      Dh = Ch | 0;
+      Dl = Cl | 0;
+      Ch = Bh | 0;
+      Cl = Bl | 0;
+      Bh = Ah | 0;
+      Bl = Al | 0;
+      const All = add3L(T1l, sigma0l, MAJl);
+      Ah = add3H(All, T1h, sigma0h, MAJh);
+      Al = All | 0;
+    }
+    ({ h: Ah, l: Al } = add(this.Ah | 0, this.Al | 0, Ah | 0, Al | 0));
+    ({ h: Bh, l: Bl } = add(this.Bh | 0, this.Bl | 0, Bh | 0, Bl | 0));
+    ({ h: Ch, l: Cl } = add(this.Ch | 0, this.Cl | 0, Ch | 0, Cl | 0));
+    ({ h: Dh, l: Dl } = add(this.Dh | 0, this.Dl | 0, Dh | 0, Dl | 0));
+    ({ h: Eh, l: El } = add(this.Eh | 0, this.El | 0, Eh | 0, El | 0));
+    ({ h: Fh, l: Fl } = add(this.Fh | 0, this.Fl | 0, Fh | 0, Fl | 0));
+    ({ h: Gh, l: Gl } = add(this.Gh | 0, this.Gl | 0, Gh | 0, Gl | 0));
+    ({ h: Hh, l: Hl } = add(this.Hh | 0, this.Hl | 0, Hh | 0, Hl | 0));
+    this.set(Ah, Al, Bh, Bl, Ch, Cl, Dh, Dl, Eh, El, Fh, Fl, Gh, Gl, Hh, Hl);
+  }
+  roundClean() {
+    clean(SHA512_W_H, SHA512_W_L);
+  }
+  destroy() {
+    clean(this.buffer);
+    this.set(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+  }
+}
+
+class _SHA512 extends SHA2_64B {
+  Ah = SHA512_IV[0] | 0;
+  Al = SHA512_IV[1] | 0;
+  Bh = SHA512_IV[2] | 0;
+  Bl = SHA512_IV[3] | 0;
+  Ch = SHA512_IV[4] | 0;
+  Cl = SHA512_IV[5] | 0;
+  Dh = SHA512_IV[6] | 0;
+  Dl = SHA512_IV[7] | 0;
+  Eh = SHA512_IV[8] | 0;
+  El = SHA512_IV[9] | 0;
+  Fh = SHA512_IV[10] | 0;
+  Fl = SHA512_IV[11] | 0;
+  Gh = SHA512_IV[12] | 0;
+  Gl = SHA512_IV[13] | 0;
+  Hh = SHA512_IV[14] | 0;
+  Hl = SHA512_IV[15] | 0;
+  constructor() {
+    super(64);
+  }
+}
+
+class _SHA384 extends SHA2_64B {
+  Ah = SHA384_IV[0] | 0;
+  Al = SHA384_IV[1] | 0;
+  Bh = SHA384_IV[2] | 0;
+  Bl = SHA384_IV[3] | 0;
+  Ch = SHA384_IV[4] | 0;
+  Cl = SHA384_IV[5] | 0;
+  Dh = SHA384_IV[6] | 0;
+  Dl = SHA384_IV[7] | 0;
+  Eh = SHA384_IV[8] | 0;
+  El = SHA384_IV[9] | 0;
+  Fh = SHA384_IV[10] | 0;
+  Fl = SHA384_IV[11] | 0;
+  Gh = SHA384_IV[12] | 0;
+  Gl = SHA384_IV[13] | 0;
+  Hh = SHA384_IV[14] | 0;
+  Hl = SHA384_IV[15] | 0;
+  constructor() {
+    super(48);
+  }
+}
+var T224_IV = /* @__PURE__ */ Uint32Array.from([
+  2352822216,
+  424955298,
+  1944164710,
+  2312950998,
+  502970286,
+  855612546,
+  1738396948,
+  1479516111,
+  258812777,
+  2077511080,
+  2011393907,
+  79989058,
+  1067287976,
+  1780299464,
+  286451373,
+  2446758561
+]);
+var T256_IV = /* @__PURE__ */ Uint32Array.from([
+  573645204,
+  4230739756,
+  2673172387,
+  3360449730,
+  596883563,
+  1867755857,
+  2520282905,
+  1497426621,
+  2519219938,
+  2827943907,
+  3193839141,
+  1401305490,
+  721525244,
+  746961066,
+  246885852,
+  2177182882
+]);
+
+class _SHA512_224 extends SHA2_64B {
+  Ah = T224_IV[0] | 0;
+  Al = T224_IV[1] | 0;
+  Bh = T224_IV[2] | 0;
+  Bl = T224_IV[3] | 0;
+  Ch = T224_IV[4] | 0;
+  Cl = T224_IV[5] | 0;
+  Dh = T224_IV[6] | 0;
+  Dl = T224_IV[7] | 0;
+  Eh = T224_IV[8] | 0;
+  El = T224_IV[9] | 0;
+  Fh = T224_IV[10] | 0;
+  Fl = T224_IV[11] | 0;
+  Gh = T224_IV[12] | 0;
+  Gl = T224_IV[13] | 0;
+  Hh = T224_IV[14] | 0;
+  Hl = T224_IV[15] | 0;
+  constructor() {
+    super(28);
+  }
+}
+
+class _SHA512_256 extends SHA2_64B {
+  Ah = T256_IV[0] | 0;
+  Al = T256_IV[1] | 0;
+  Bh = T256_IV[2] | 0;
+  Bl = T256_IV[3] | 0;
+  Ch = T256_IV[4] | 0;
+  Cl = T256_IV[5] | 0;
+  Dh = T256_IV[6] | 0;
+  Dl = T256_IV[7] | 0;
+  Eh = T256_IV[8] | 0;
+  El = T256_IV[9] | 0;
+  Fh = T256_IV[10] | 0;
+  Fl = T256_IV[11] | 0;
+  Gh = T256_IV[12] | 0;
+  Gl = T256_IV[13] | 0;
+  Hh = T256_IV[14] | 0;
+  Hl = T256_IV[15] | 0;
+  constructor() {
+    super(32);
+  }
+}
+var sha256 = /* @__PURE__ */ createHasher(() => new _SHA256, /* @__PURE__ */ oidNist(1));
+/*! noble-secp256k1 - MIT License (c) 2019 Paul Miller (paulmillr.com) */
+var secp256k1_CURVE = {
+  p: 0xfffffffffffffffffffffffffffffffffffffffffffffffffffffffefffffc2fn,
+  n: 0xfffffffffffffffffffffffffffffffebaaedce6af48a03bbfd25e8cd0364141n,
+  h: 1n,
+  a: 0n,
+  b: 7n,
+  Gx: 0x79be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798n,
+  Gy: 0x483ada7726a3c4655da4fbfc0e1108a8fd17b448a68554199c47d08ffb10d4b8n
+};
+var { p: P, n: N, Gx, Gy, b: _b } = secp256k1_CURVE;
+var L = 32;
+var L2 = 64;
+var lengths = {
+  publicKey: L + 1,
+  publicKeyUncompressed: L2 + 1,
+  signature: L2,
+  seed: L + L / 2
+};
+var captureTrace = (...args) => {
+  if ("captureStackTrace" in Error && typeof Error.captureStackTrace === "function") {
+    Error.captureStackTrace(...args);
+  }
+};
+var err = (message = "") => {
+  const e = new Error(message);
+  captureTrace(e, err);
+  throw e;
+};
+var isBig = (n) => typeof n === "bigint";
+var isStr = (s) => typeof s === "string";
+var isBytes2 = (a) => a instanceof Uint8Array || ArrayBuffer.isView(a) && a.constructor.name === "Uint8Array";
+var abytes2 = (value2, length, title = "") => {
+  const bytes = isBytes2(value2);
+  const len2 = value2?.length;
+  const needsLen = length !== undefined;
+  if (!bytes || needsLen && len2 !== length) {
+    const prefix = title && `"${title}" `;
+    const ofLen = needsLen ? ` of length ${length}` : "";
+    const got = bytes ? `length=${len2}` : `type=${typeof value2}`;
+    err(prefix + "expected Uint8Array" + ofLen + ", got " + got);
+  }
+  return value2;
+};
+var u8n = (len2) => new Uint8Array(len2);
+var padh = (n, pad) => n.toString(16).padStart(pad, "0");
+var bytesToHex2 = (b) => Array.from(abytes2(b)).map((e) => padh(e, 2)).join("");
+var C = { _0: 48, _9: 57, A: 65, F: 70, a: 97, f: 102 };
+var _ch = (ch) => {
+  if (ch >= C._0 && ch <= C._9)
+    return ch - C._0;
+  if (ch >= C.A && ch <= C.F)
+    return ch - (C.A - 10);
+  if (ch >= C.a && ch <= C.f)
+    return ch - (C.a - 10);
+  return;
+};
+var hexToBytes3 = (hex) => {
+  const e = "hex invalid";
+  if (!isStr(hex))
+    return err(e);
+  const hl = hex.length;
+  const al = hl / 2;
+  if (hl % 2)
+    return err(e);
+  const array = u8n(al);
+  for (let ai = 0, hi = 0;ai < al; ai++, hi += 2) {
+    const n1 = _ch(hex.charCodeAt(hi));
+    const n2 = _ch(hex.charCodeAt(hi + 1));
+    if (n1 === undefined || n2 === undefined)
+      return err(e);
+    array[ai] = n1 * 16 + n2;
+  }
+  return array;
+};
+var cr = () => globalThis?.crypto;
+var subtle = () => cr()?.subtle ?? err("crypto.subtle must be defined, consider polyfill");
+var concatBytes = (...arrs) => {
+  const r = u8n(arrs.reduce((sum, a) => sum + abytes2(a).length, 0));
+  let pad = 0;
+  arrs.forEach((a) => {
+    r.set(a, pad);
+    pad += a.length;
+  });
+  return r;
+};
+var randomBytes = (len2 = L) => {
+  const c = cr();
+  return c.getRandomValues(u8n(len2));
+};
+var big = BigInt;
+var arange = (n, min, max, msg = "bad number: out of range") => isBig(n) && min <= n && n < max ? n : err(msg);
+var M = (a, b = P) => {
+  const r = a % b;
+  return r >= 0n ? r : b + r;
+};
+var modN = (a) => M(a, N);
+var invert = (num, md) => {
+  if (num === 0n || md <= 0n)
+    err("no inverse n=" + num + " mod=" + md);
+  let a = M(num, md), b = md, x = 0n, y = 1n, u = 1n, v = 0n;
+  while (a !== 0n) {
+    const q = b / a, r = b % a;
+    const m = x - u * q, n = y - v * q;
+    b = a, a = r, x = u, y = v, u = m, v = n;
+  }
+  return b === 1n ? M(x, md) : err("no inverse");
+};
+var callHash = (name) => {
+  const fn = hashes[name];
+  if (typeof fn !== "function")
+    err("hashes." + name + " not set");
+  return fn;
+};
+var apoint = (p) => p instanceof Point ? p : err("Point expected");
+var koblitz = (x) => M(M(x * x) * x + _b);
+var FpIsValid = (n) => arange(n, 0n, P);
+var FpIsValidNot0 = (n) => arange(n, 1n, P);
+var FnIsValidNot0 = (n) => arange(n, 1n, N);
+var isEven = (y) => (y & 1n) === 0n;
+var u8of = (n) => Uint8Array.of(n);
+var getPrefix = (y) => u8of(isEven(y) ? 2 : 3);
+var lift_x = (x) => {
+  const c = koblitz(FpIsValidNot0(x));
+  let r = 1n;
+  for (let num = c, e = (P + 1n) / 4n;e > 0n; e >>= 1n) {
+    if (e & 1n)
+      r = r * num % P;
+    num = num * num % P;
+  }
+  return M(r * r) === c ? r : err("sqrt invalid");
+};
+
+class Point {
+  static BASE;
+  static ZERO;
+  X;
+  Y;
+  Z;
+  constructor(X, Y, Z) {
+    this.X = FpIsValid(X);
+    this.Y = FpIsValidNot0(Y);
+    this.Z = FpIsValid(Z);
+    Object.freeze(this);
+  }
+  static CURVE() {
+    return secp256k1_CURVE;
+  }
+  static fromAffine(ap) {
+    const { x, y } = ap;
+    return x === 0n && y === 0n ? I : new Point(x, y, 1n);
+  }
+  static fromBytes(bytes) {
+    abytes2(bytes);
+    const { publicKey: comp, publicKeyUncompressed: uncomp } = lengths;
+    let p = undefined;
+    const length = bytes.length;
+    const head = bytes[0];
+    const tail = bytes.subarray(1);
+    const x = sliceBytesNumBE(tail, 0, L);
+    if (length === comp && (head === 2 || head === 3)) {
+      let y = lift_x(x);
+      const evenY = isEven(y);
+      const evenH = isEven(big(head));
+      if (evenH !== evenY)
+        y = M(-y);
+      p = new Point(x, y, 1n);
+    }
+    if (length === uncomp && head === 4)
+      p = new Point(x, sliceBytesNumBE(tail, L, L2), 1n);
+    return p ? p.assertValidity() : err("bad point: not on curve");
+  }
+  static fromHex(hex) {
+    return Point.fromBytes(hexToBytes3(hex));
+  }
+  get x() {
+    return this.toAffine().x;
+  }
+  get y() {
+    return this.toAffine().y;
+  }
+  equals(other) {
+    const { X: X1, Y: Y1, Z: Z1 } = this;
+    const { X: X2, Y: Y2, Z: Z2 } = apoint(other);
+    const X1Z2 = M(X1 * Z2);
+    const X2Z1 = M(X2 * Z1);
+    const Y1Z2 = M(Y1 * Z2);
+    const Y2Z1 = M(Y2 * Z1);
+    return X1Z2 === X2Z1 && Y1Z2 === Y2Z1;
+  }
+  is0() {
+    return this.equals(I);
+  }
+  negate() {
+    return new Point(this.X, M(-this.Y), this.Z);
+  }
+  double() {
+    return this.add(this);
+  }
+  add(other) {
+    const { X: X1, Y: Y1, Z: Z1 } = this;
+    const { X: X2, Y: Y2, Z: Z2 } = apoint(other);
+    const a = 0n;
+    const b = _b;
+    let X3 = 0n, Y3 = 0n, Z3 = 0n;
+    const b3 = M(b * 3n);
+    let t0 = M(X1 * X2), t1 = M(Y1 * Y2), t2 = M(Z1 * Z2), t3 = M(X1 + Y1);
+    let t4 = M(X2 + Y2);
+    t3 = M(t3 * t4);
+    t4 = M(t0 + t1);
+    t3 = M(t3 - t4);
+    t4 = M(X1 + Z1);
+    let t5 = M(X2 + Z2);
+    t4 = M(t4 * t5);
+    t5 = M(t0 + t2);
+    t4 = M(t4 - t5);
+    t5 = M(Y1 + Z1);
+    X3 = M(Y2 + Z2);
+    t5 = M(t5 * X3);
+    X3 = M(t1 + t2);
+    t5 = M(t5 - X3);
+    Z3 = M(a * t4);
+    X3 = M(b3 * t2);
+    Z3 = M(X3 + Z3);
+    X3 = M(t1 - Z3);
+    Z3 = M(t1 + Z3);
+    Y3 = M(X3 * Z3);
+    t1 = M(t0 + t0);
+    t1 = M(t1 + t0);
+    t2 = M(a * t2);
+    t4 = M(b3 * t4);
+    t1 = M(t1 + t2);
+    t2 = M(t0 - t2);
+    t2 = M(a * t2);
+    t4 = M(t4 + t2);
+    t0 = M(t1 * t4);
+    Y3 = M(Y3 + t0);
+    t0 = M(t5 * t4);
+    X3 = M(t3 * X3);
+    X3 = M(X3 - t0);
+    t0 = M(t3 * t1);
+    Z3 = M(t5 * Z3);
+    Z3 = M(Z3 + t0);
+    return new Point(X3, Y3, Z3);
+  }
+  subtract(other) {
+    return this.add(apoint(other).negate());
+  }
+  multiply(n, safe = true) {
+    if (!safe && n === 0n)
+      return I;
+    FnIsValidNot0(n);
+    if (n === 1n)
+      return this;
+    if (this.equals(G))
+      return wNAF(n).p;
+    let p = I;
+    let f = G;
+    for (let d = this;n > 0n; d = d.double(), n >>= 1n) {
+      if (n & 1n)
+        p = p.add(d);
+      else if (safe)
+        f = f.add(d);
+    }
+    return p;
+  }
+  multiplyUnsafe(scalar) {
+    return this.multiply(scalar, false);
+  }
+  toAffine() {
+    const { X: x, Y: y, Z: z } = this;
+    if (this.equals(I))
+      return { x: 0n, y: 0n };
+    if (z === 1n)
+      return { x, y };
+    const iz = invert(z, P);
+    if (M(z * iz) !== 1n)
+      err("inverse invalid");
+    return { x: M(x * iz), y: M(y * iz) };
+  }
+  assertValidity() {
+    const { x, y } = this.toAffine();
+    FpIsValidNot0(x);
+    FpIsValidNot0(y);
+    return M(y * y) === koblitz(x) ? this : err("bad point: not on curve");
+  }
+  toBytes(isCompressed = true) {
+    const { x, y } = this.assertValidity().toAffine();
+    const x32b = numTo32b(x);
+    if (isCompressed)
+      return concatBytes(getPrefix(y), x32b);
+    return concatBytes(u8of(4), x32b, numTo32b(y));
+  }
+  toHex(isCompressed) {
+    return bytesToHex2(this.toBytes(isCompressed));
+  }
+}
+var G = new Point(Gx, Gy, 1n);
+var I = new Point(0n, 1n, 0n);
+Point.BASE = G;
+Point.ZERO = I;
+var bytesToNumBE = (b) => big("0x" + (bytesToHex2(b) || "0"));
+var sliceBytesNumBE = (b, from2, to) => bytesToNumBE(b.subarray(from2, to));
+var B256 = 2n ** 256n;
+var numTo32b = (num) => hexToBytes3(padh(arange(num, 0n, B256), L2));
+var secretKeyToScalar = (secretKey) => {
+  const num = bytesToNumBE(abytes2(secretKey, L, "secret key"));
+  return arange(num, 1n, N, "invalid secret key: outside of range");
+};
+var highS = (n) => n > N >> 1n;
+var getPublicKey = (privKey, isCompressed = true) => {
+  return G.multiply(secretKeyToScalar(privKey)).toBytes(isCompressed);
+};
+var assertRecoveryBit = (recovery) => {
+  if (![0, 1, 2, 3].includes(recovery))
+    err("recovery id must be valid and present");
+};
+var assertSigFormat = (format) => {
+  if (format != null && !ALL_SIG.includes(format))
+    err(`Signature format must be one of: ${ALL_SIG.join(", ")}`);
+  if (format === SIG_DER)
+    err('Signature format "der" is not supported: switch to noble-curves');
+};
+var assertSigLength = (sig, format = SIG_COMPACT) => {
+  assertSigFormat(format);
+  const SL = lengths.signature;
+  const RL = SL + 1;
+  let msg = `Signature format "${format}" expects Uint8Array with length `;
+  if (format === SIG_COMPACT && sig.length !== SL)
+    err(msg + SL);
+  if (format === SIG_RECOVERED && sig.length !== RL)
+    err(msg + RL);
+};
+
+class Signature {
+  r;
+  s;
+  recovery;
+  constructor(r, s, recovery) {
+    this.r = FnIsValidNot0(r);
+    this.s = FnIsValidNot0(s);
+    if (recovery != null)
+      this.recovery = recovery;
+    Object.freeze(this);
+  }
+  static fromBytes(b, format = SIG_COMPACT) {
+    assertSigLength(b, format);
+    let rec;
+    if (format === SIG_RECOVERED) {
+      rec = b[0];
+      b = b.subarray(1);
+    }
+    const r = sliceBytesNumBE(b, 0, L);
+    const s = sliceBytesNumBE(b, L, L2);
+    return new Signature(r, s, rec);
+  }
+  addRecoveryBit(bit) {
+    return new Signature(this.r, this.s, bit);
+  }
+  hasHighS() {
+    return highS(this.s);
+  }
+  toBytes(format = SIG_COMPACT) {
+    const { r, s, recovery } = this;
+    const res = concatBytes(numTo32b(r), numTo32b(s));
+    if (format === SIG_RECOVERED) {
+      assertRecoveryBit(recovery);
+      return concatBytes(Uint8Array.of(recovery), res);
+    }
+    return res;
+  }
+}
+var bits2int = (bytes) => {
+  const delta = bytes.length * 8 - 256;
+  if (delta > 1024)
+    err("msg invalid");
+  const num = bytesToNumBE(bytes);
+  return delta > 0 ? num >> big(delta) : num;
+};
+var bits2int_modN = (bytes) => modN(bits2int(abytes2(bytes)));
+var SIG_COMPACT = "compact";
+var SIG_RECOVERED = "recovered";
+var SIG_DER = "der";
+var ALL_SIG = [SIG_COMPACT, SIG_RECOVERED, SIG_DER];
+var defaultSignOpts = {
+  lowS: true,
+  prehash: true,
+  format: SIG_COMPACT,
+  extraEntropy: false
+};
+var _sha = "SHA-256";
+var hashes = {
+  hmacSha256Async: async (key, message) => {
+    const s = subtle();
+    const name = "HMAC";
+    const k = await s.importKey("raw", key, { name, hash: { name: _sha } }, false, ["sign"]);
+    return u8n(await s.sign(name, k, message));
+  },
+  hmacSha256: undefined,
+  sha256Async: async (msg) => u8n(await subtle().digest(_sha, msg)),
+  sha256: undefined
+};
+var prepMsg = (msg, opts, async_) => {
+  abytes2(msg, undefined, "message");
+  if (!opts.prehash)
+    return msg;
+  return async_ ? hashes.sha256Async(msg) : callHash("sha256")(msg);
+};
+var NULL = u8n(0);
+var byte0 = u8of(0);
+var byte1 = u8of(1);
+var _maxDrbgIters = 1000;
+var _drbgErr = "drbg: tried max amount of iterations";
+var hmacDrbg = (seed, pred) => {
+  let v = u8n(L);
+  let k = u8n(L);
+  let i2 = 0;
+  const reset = () => {
+    v.fill(1);
+    k.fill(0);
+  };
+  const h = (...b) => callHash("hmacSha256")(k, concatBytes(v, ...b));
+  const reseed = (seed2 = NULL) => {
+    k = h(byte0, seed2);
+    v = h();
+    if (seed2.length === 0)
+      return;
+    k = h(byte1, seed2);
+    v = h();
+  };
+  const gen = () => {
+    if (i2++ >= _maxDrbgIters)
+      err(_drbgErr);
+    v = h();
+    return v;
+  };
+  reset();
+  reseed(seed);
+  let res = undefined;
+  while (!(res = pred(gen())))
+    reseed();
+  reset();
+  return res;
+};
+var _sign = (messageHash, secretKey, opts, hmacDrbg2) => {
+  let { lowS, extraEntropy } = opts;
+  const int2octets = numTo32b;
+  const h1i = bits2int_modN(messageHash);
+  const h1o = int2octets(h1i);
+  const d = secretKeyToScalar(secretKey);
+  const seedArgs = [int2octets(d), h1o];
+  if (extraEntropy != null && extraEntropy !== false) {
+    const e = extraEntropy === true ? randomBytes(L) : extraEntropy;
+    seedArgs.push(abytes2(e, undefined, "extraEntropy"));
+  }
+  const seed = concatBytes(...seedArgs);
+  const m = h1i;
+  const k2sig = (kBytes) => {
+    const k = bits2int(kBytes);
+    if (!(1n <= k && k < N))
+      return;
+    const ik = invert(k, N);
+    const q = G.multiply(k).toAffine();
+    const r = modN(q.x);
+    if (r === 0n)
+      return;
+    const s = modN(ik * modN(m + r * d));
+    if (s === 0n)
+      return;
+    let recovery = (q.x === r ? 0 : 2) | Number(q.y & 1n);
+    let normS = s;
+    if (lowS && highS(s)) {
+      normS = modN(-s);
+      recovery ^= 1;
+    }
+    const sig = new Signature(r, normS, recovery);
+    return sig.toBytes(opts.format);
+  };
+  return hmacDrbg2(seed, k2sig);
+};
+var setDefaults = (opts) => {
+  const res = {};
+  Object.keys(defaultSignOpts).forEach((k) => {
+    res[k] = opts[k] ?? defaultSignOpts[k];
+  });
+  return res;
+};
+var sign = (message, secretKey, opts = {}) => {
+  opts = setDefaults(opts);
+  message = prepMsg(message, opts, false);
+  return _sign(message, secretKey, opts, hmacDrbg);
+};
+var randomSecretKey = (seed = randomBytes(lengths.seed)) => {
+  abytes2(seed);
+  if (seed.length < lengths.seed || seed.length > 1024)
+    err("expected 40-1024b");
+  const num = M(bytesToNumBE(seed), N - 1n);
+  return numTo32b(num + 1n);
+};
+var createKeygen = (getPublicKey2) => (seed) => {
+  const secretKey = randomSecretKey(seed);
+  return { secretKey, publicKey: getPublicKey2(secretKey) };
+};
+var keygen = createKeygen(getPublicKey);
+var extpubSchnorr = (priv) => {
+  const d_ = secretKeyToScalar(priv);
+  const p = G.multiply(d_);
+  const { x, y } = p.assertValidity().toAffine();
+  const d = isEven(y) ? d_ : modN(-d_);
+  const px = numTo32b(x);
+  return { d, px };
+};
+var pubSchnorr = (secretKey) => {
+  return extpubSchnorr(secretKey).px;
+};
+var keygenSchnorr = createKeygen(pubSchnorr);
+var W = 8;
+var scalarBits = 256;
+var pwindows = Math.ceil(scalarBits / W) + 1;
+var pwindowSize = 2 ** (W - 1);
+var precompute = () => {
+  const points = [];
+  let p = G;
+  let b = p;
+  for (let w = 0;w < pwindows; w++) {
+    b = p;
+    points.push(b);
+    for (let i2 = 1;i2 < pwindowSize; i2++) {
+      b = b.add(p);
+      points.push(b);
+    }
+    p = b.double();
+  }
+  return points;
+};
+var Gpows = undefined;
+var ctneg = (cnd, p) => {
+  const n = p.negate();
+  return cnd ? n : p;
+};
+var wNAF = (n) => {
+  const comp = Gpows || (Gpows = precompute());
+  let p = I;
+  let f = G;
+  const pow_2_w = 2 ** W;
+  const maxNum = pow_2_w;
+  const mask = big(pow_2_w - 1);
+  const shiftBy = big(W);
+  for (let w = 0;w < pwindows; w++) {
+    let wbits = Number(n & mask);
+    n >>= shiftBy;
+    if (wbits > pwindowSize) {
+      wbits -= maxNum;
+      n += 1n;
+    }
+    const off = w * pwindowSize;
+    const offF = off;
+    const offP = off + Math.abs(wbits) - 1;
+    const isEven2 = w % 2 !== 0;
+    const isNeg = wbits < 0;
+    if (wbits === 0) {
+      f = f.add(ctneg(isEven2, comp[offF]));
+    } else {
+      p = p.add(ctneg(isNeg, comp[offP]));
+    }
+  }
+  if (n !== 0n)
+    err("invalid wnaf");
+  return { p, f };
+};
+hashes.sha256 = (msg) => sha256(msg);
+hashes.hmacSha256 = (key, msg) => hmac(sha256, key, msg);
+var toHex = (bytes) => "0x" + bytesToHex(bytes);
+var fromHex = (hex) => hexToBytes2(hex.startsWith("0x") ? hex.slice(2) : hex);
+var keccak256 = (data) => keccak_256(data);
+var keccak256Hex = (data) => toHex(keccak256(data));
+function padLeft(hex, byteLen) {
+  const clean2 = hex.startsWith("0x") ? hex.slice(2) : hex;
+  return clean2.padStart(byteLen * 2, "0");
+}
+function encodeUint256(value2) {
+  return padLeft(BigInt(value2).toString(16), 32);
+}
+function encodeAddress(address) {
+  return padLeft(address, 32);
+}
+function ecSign(digest, privateKey) {
+  const sig = sign(digest, privateKey, {
+    prehash: false,
+    format: "recovered"
+  });
+  const recovery = sig[0];
+  const r = bytesToHex(sig.slice(1, 33));
+  const s = bytesToHex(sig.slice(33, 65));
+  return { r, s, v: recovery + 27 };
+}
+var EIP712_DOMAIN_TYPEHASH = keccak256Hex(new TextEncoder().encode("EIP712Domain(string name,string version,uint256 chainId,address verifyingContract)"));
+function hashDomain(name, version, chainId, verifyingContract) {
+  const nameHash = keccak256Hex(new TextEncoder().encode(name));
+  const versionHash = keccak256Hex(new TextEncoder().encode(version));
+  const encoded = EIP712_DOMAIN_TYPEHASH.slice(2) + nameHash.slice(2) + versionHash.slice(2) + encodeUint256(chainId) + encodeAddress(verifyingContract);
+  return keccak256Hex(fromHex(encoded));
+}
+var ORDER_TYPEHASH = keccak256Hex(new TextEncoder().encode("Order(uint256 salt,address maker,address signer,address taker,uint256 tokenId,uint256 makerAmount,uint256 takerAmount,uint256 expiration,uint256 nonce,uint256 feeRateBps,uint8 side,uint8 signatureType)"));
+function hashOrder(order) {
+  const encoded = ORDER_TYPEHASH.slice(2) + encodeUint256(order.salt) + encodeAddress(order.maker) + encodeAddress(order.signer) + encodeAddress(order.taker) + encodeUint256(order.tokenId) + encodeUint256(order.makerAmount) + encodeUint256(order.takerAmount) + encodeUint256(order.expiration) + encodeUint256(order.nonce) + encodeUint256(order.feeRateBps) + encodeUint256(order.side) + encodeUint256(order.signatureType);
+  return keccak256Hex(fromHex(encoded));
+}
+function signOrder(privateKey, chainId, exchangeAddress, order) {
+  const domainHash = hashDomain("Polymarket CTF Exchange", "1", chainId, exchangeAddress);
+  const orderHash = hashOrder(order);
+  const digest = keccak256(fromHex("1901" + domainHash.slice(2) + orderHash.slice(2)));
+  const { r, s, v } = ecSign(digest, fromHex(privateKey));
+  return "0x" + r + s + v.toString(16).padStart(2, "0");
+}
+var CLOB_AUTH_DOMAIN_TYPEHASH = keccak256Hex(new TextEncoder().encode("EIP712Domain(string name,string version,uint256 chainId)"));
+var CLOB_AUTH_TYPEHASH = keccak256Hex(new TextEncoder().encode("ClobAuth(address address,string timestamp,uint256 nonce,string message)"));
+function hashClobAuthDomain(chainId) {
+  const nameHash = keccak256Hex(new TextEncoder().encode("ClobAuthDomain"));
+  const versionHash = keccak256Hex(new TextEncoder().encode("1"));
+  const encoded = CLOB_AUTH_DOMAIN_TYPEHASH.slice(2) + nameHash.slice(2) + versionHash.slice(2) + encodeUint256(chainId);
+  return keccak256Hex(fromHex(encoded));
+}
+function signClobAuth(privateKey, chainId, address, timestamp, nonce) {
+  const msgToSign = "This message attests that I control the given wallet";
+  const timestampHash = keccak256Hex(new TextEncoder().encode(String(timestamp)));
+  const messageHash = keccak256Hex(new TextEncoder().encode(msgToSign));
+  const structHash = keccak256Hex(fromHex(CLOB_AUTH_TYPEHASH.slice(2) + encodeAddress(address) + timestampHash.slice(2) + encodeUint256(nonce) + messageHash.slice(2)));
+  const domainHash = hashClobAuthDomain(chainId);
+  const digest = keccak256(fromHex("1901" + domainHash.slice(2) + structHash.slice(2)));
+  const { r, s, v } = ecSign(digest, fromHex(privateKey));
+  return "0x" + r + s + v.toString(16).padStart(2, "0");
+}
+var B64 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+function base64ToBytes2(b64) {
+  const sanitized = b64.replace(/-/g, "+").replace(/_/g, "/").replace(/[^A-Za-z0-9+/=]/g, "");
+  const pad = sanitized.endsWith("==") ? 2 : sanitized.endsWith("=") ? 1 : 0;
+  const len2 = sanitized.length * 3 / 4 - pad;
+  const bytes = new Uint8Array(len2);
+  let j = 0;
+  for (let i2 = 0;i2 < sanitized.length; i2 += 4) {
+    const a = B64.indexOf(sanitized[i2]);
+    const b = B64.indexOf(sanitized[i2 + 1]);
+    const c = sanitized[i2 + 2] === "=" ? 0 : B64.indexOf(sanitized[i2 + 2]);
+    const d = sanitized[i2 + 3] === "=" ? 0 : B64.indexOf(sanitized[i2 + 3]);
+    const triplet = a << 18 | b << 12 | c << 6 | d;
+    if (j < len2)
+      bytes[j++] = triplet >> 16 & 255;
+    if (j < len2)
+      bytes[j++] = triplet >> 8 & 255;
+    if (j < len2)
+      bytes[j++] = triplet & 255;
+  }
+  return bytes;
+}
+function bytesToBase64(bytes) {
+  let result = "";
+  for (let i2 = 0;i2 < bytes.length; i2 += 3) {
+    const a = bytes[i2];
+    const b = i2 + 1 < bytes.length ? bytes[i2 + 1] : 0;
+    const c = i2 + 2 < bytes.length ? bytes[i2 + 2] : 0;
+    result += B64[a >> 2 & 63];
+    result += B64[(a << 4 | b >> 4) & 63];
+    result += i2 + 1 < bytes.length ? B64[(b << 2 | c >> 6) & 63] : "=";
+    result += i2 + 2 < bytes.length ? B64[c & 63] : "=";
+  }
+  return result;
+}
+function buildHmacSignature(secret, timestamp, method, requestPath, body) {
+  let message = String(timestamp) + method + requestPath;
+  if (body !== undefined)
+    message += body;
+  const keyBytes = base64ToBytes2(secret);
+  const msgBytes = new TextEncoder().encode(message);
+  const sig = hmac(sha256, keyBytes, msgBytes);
+  const b64 = bytesToBase64(sig);
+  return b64.replace(/\+/g, "-").replace(/\//g, "_");
+}
+function getAddress(privateKey) {
+  const pubKey = getPublicKey(fromHex(privateKey), false);
+  const hash = keccak256(pubKey.slice(1));
+  const addr = toHex(hash.slice(12));
+  return checksumAddress(addr);
+}
+function checksumAddress(address) {
+  const addr = address.toLowerCase().replace("0x", "");
+  const hash = bytesToHex(keccak256(new TextEncoder().encode(addr)));
+  let result = "0x";
+  for (let i2 = 0;i2 < addr.length; i2++) {
+    if (parseInt(hash[i2], 16) >= 8) {
+      result += addr[i2].toUpperCase();
+    } else {
+      result += addr[i2];
+    }
+  }
+  return result;
+}
+var checkOpenMarket = (sendRequester, marketId, clobId) => {
+  const res = httpGet(sendRequester, `${POLYMARKET.BASE_URL}/markets/${marketId}`);
+  const data = JSON.parse(res);
+  if (data.closed) {
+    return JSON.stringify({
+      valid: false,
+      error: "market is closed"
+    });
+  }
+  const clobTokenIds = JSON.parse(data.clobTokenIds || "[]");
+  if (!clobTokenIds.includes(clobId)) {
+    return JSON.stringify({
+      valid: false,
+      error: `clobId ${clobId} not in market clobTokenIds: ${clobTokenIds.join(", ")}`
+    });
+  }
+  return JSON.stringify({
+    valid: true,
+    negRisk: data.negRisk === true,
+    orderPriceMinTickSize: data.orderPriceMinTickSize
+  });
+};
+var ROUNDING = {
+  "0.1": { price: 1, size: 2, amount: 3 },
+  "0.01": { price: 2, size: 2, amount: 4 },
+  "0.001": { price: 3, size: 2, amount: 5 },
+  "0.0001": { price: 4, size: 2, amount: 6 }
+};
+function roundDown(num, dec) {
+  return Math.floor(num * 10 ** dec) / 10 ** dec;
+}
+function roundNormal(num, dec) {
+  return Math.round((num + Number.EPSILON) * 10 ** dec) / 10 ** dec;
+}
+function roundUp(num, dec) {
+  return Math.ceil(num * 10 ** dec) / 10 ** dec;
+}
+function decimalPlaces(num) {
+  if (Number.isInteger(num))
+    return 0;
+  const parts = num.toString().split(".");
+  return parts.length <= 1 ? 0 : parts[1].length;
+}
+function parseUnits(value2, decimals) {
+  const [int, frac = ""] = value2.split(".");
+  const padded = (frac + "0".repeat(decimals)).slice(0, decimals);
+  return BigInt(int + padded);
+}
+function generateSalt() {
+  return Math.floor(Math.random() * Number.MAX_SAFE_INTEGER).toString();
+}
+function buildL1Headers(privateKey, address) {
+  const timestamp = Math.floor(Date.now() / 1000);
+  const nonce = 0;
+  const signature = signClobAuth(privateKey, POLYMARKET.CHAIN_ID, address, timestamp, nonce);
+  return {
+    POLY_ADDRESS: address,
+    POLY_SIGNATURE: signature,
+    POLY_TIMESTAMP: String(timestamp),
+    POLY_NONCE: String(nonce)
+  };
+}
+function createOrDeriveApiKey(sendRequester, privateKey) {
+  const address = getAddress(privateKey);
+  try {
+    const createRes = httpPost(sendRequester, `${POLYMARKET.HOST}/auth/api-key`, "", { headers: buildL1Headers(privateKey, address) });
+    const data2 = JSON.parse(createRes);
+    if (data2.apiKey) {
+      return { key: data2.apiKey, secret: data2.secret, passphrase: data2.passphrase };
+    }
+  } catch (_) {}
+  const deriveRes = httpGet(sendRequester, `${POLYMARKET.HOST}/auth/derive-api-key`, { headers: buildL1Headers(privateKey, address) });
+  const data = JSON.parse(deriveRes);
+  return { key: data.apiKey, secret: data.secret, passphrase: data.passphrase };
+}
+function placeOrder(sendRequester, privateKey, creds, params) {
+  const address = getAddress(privateKey);
+  const rc = ROUNDING[params.tickSize] || ROUNDING["0.01"];
+  const sideNum = params.side === "BUY" ? 0 : 1;
+  const rawPrice = roundNormal(params.price, rc.price);
+  let rawMakerAmt;
+  let rawTakerAmt;
+  if (params.side === "BUY") {
+    rawTakerAmt = roundDown(params.size, rc.size);
+    rawMakerAmt = rawTakerAmt * rawPrice;
+    if (decimalPlaces(rawMakerAmt) > rc.amount) {
+      rawMakerAmt = roundUp(rawMakerAmt, rc.amount + 4);
+      if (decimalPlaces(rawMakerAmt) > rc.amount) {
+        rawMakerAmt = roundDown(rawMakerAmt, rc.amount);
+      }
+    }
+  } else {
+    rawMakerAmt = roundDown(params.size, rc.size);
+    rawTakerAmt = rawMakerAmt * rawPrice;
+    if (decimalPlaces(rawTakerAmt) > rc.amount) {
+      rawTakerAmt = roundUp(rawTakerAmt, rc.amount + 4);
+      if (decimalPlaces(rawTakerAmt) > rc.amount) {
+        rawTakerAmt = roundDown(rawTakerAmt, rc.amount);
+      }
+    }
+  }
+  const makerAmount = parseUnits(rawMakerAmt.toString(), POLYMARKET.COLLATERAL_DECIMALS).toString();
+  const takerAmount = parseUnits(rawTakerAmt.toString(), POLYMARKET.COLLATERAL_DECIMALS).toString();
+  const exchangeAddress = params.negRisk ? POLYMARKET.NEG_RISK_EXCHANGE : POLYMARKET.EXCHANGE;
+  const order = {
+    salt: generateSalt(),
+    maker: address,
+    signer: address,
+    taker: "0x0000000000000000000000000000000000000000",
+    tokenId: params.tokenId,
+    makerAmount,
+    takerAmount,
+    expiration: "0",
+    nonce: "0",
+    feeRateBps: "0",
+    side: sideNum,
+    signatureType: POLYMARKET.SIGNATURE_TYPE
+  };
+  const signature = signOrder(privateKey, POLYMARKET.CHAIN_ID, exchangeAddress, order);
+  const orderPayload = {
+    deferExec: false,
+    order: {
+      salt: Number(order.salt),
+      maker: order.maker,
+      signer: order.signer,
+      taker: order.taker,
+      tokenId: order.tokenId,
+      makerAmount: order.makerAmount,
+      takerAmount: order.takerAmount,
+      side: params.side,
+      expiration: order.expiration,
+      nonce: order.nonce,
+      feeRateBps: order.feeRateBps,
+      signatureType: order.signatureType,
+      signature
+    },
+    owner: creds.key,
+    orderType: "GTC"
+  };
+  const body = JSON.stringify(orderPayload);
+  const endpoint = "/order";
+  const timestamp = Math.floor(Date.now() / 1000);
+  const hmacSig = buildHmacSignature(creds.secret, timestamp, "POST", endpoint, body);
+  const res = httpPost(sendRequester, `${POLYMARKET.HOST}${endpoint}`, body, {
+    headers: {
+      "Content-Type": "application/json",
+      POLY_ADDRESS: address,
+      POLY_SIGNATURE: hmacSig,
+      POLY_TIMESTAMP: String(timestamp),
+      POLY_API_KEY: creds.key,
+      POLY_PASSPHRASE: creds.passphrase
+    }
+  });
+  return res;
+}
 var onHttpTrigger = (runtime2, payload) => {
   const input = new TextDecoder().decode(payload.input);
-  runtime2.log(`HTTP trigger received: ${JSON.parse(input.toString())["key"]}`);
-  return input;
+  const parsedInput = JSON.parse(input);
+  runtime2.log(`HTTP trigger: marketId=${parsedInput.marketId} clobId=${parsedInput.clobId}`);
+  const httpClient = new ClientCapability;
+  const fetchMarket = httpClient.sendRequest(runtime2, (sendRequester, marketId, clobId) => checkOpenMarket(sendRequester, marketId, clobId), consensusIdenticalAggregation());
+  const marketRes = fetchMarket(parsedInput.marketId, parsedInput.clobId).result();
+  const validation = JSON.parse(marketRes);
+  runtime2.log(`Market validation: ${JSON.stringify(validation)}`);
+  if (!validation.valid) {
+    return JSON.stringify({ success: false, error: validation.error });
+  }
+  const secret = runtime2.getSecret({ id: "PRIVATE_KEY", namespace: "" }).result();
+  const privateKey = secret.value;
+  const deriveApiKeyFn = httpClient.sendRequest(runtime2, (sendRequester, pk) => {
+    const creds2 = createOrDeriveApiKey(sendRequester, pk);
+    return JSON.stringify(creds2);
+  }, consensusIdenticalAggregation());
+  const credsRes = deriveApiKeyFn(privateKey).result();
+  const creds = JSON.parse(credsRes);
+  runtime2.log(`API key derived: ${creds.key}`);
+  const placeOrderFn = httpClient.sendRequest(runtime2, (sendRequester, pk, credsJson, paramsJson) => {
+    const c = JSON.parse(credsJson);
+    const p = JSON.parse(paramsJson);
+    return placeOrder(sendRequester, pk, c, p);
+  }, consensusIdenticalAggregation());
+  const orderParams = {
+    tokenId: parsedInput.clobId,
+    price: parsedInput.price,
+    size: parsedInput.size,
+    side: parsedInput.side,
+    negRisk: validation.negRisk,
+    tickSize: validation.orderPriceMinTickSize
+  };
+  const orderRes = placeOrderFn(privateKey, JSON.stringify(creds), JSON.stringify(orderParams)).result();
+  runtime2.log(`Order result: ${orderRes}`);
+  return JSON.stringify({ success: true, order: JSON.parse(orderRes) });
 };
-var initWorkflow = (config) => {
+var initWorkflow = (_config) => {
   const http = new HTTPCapability;
   return [handler(http.trigger({ authorizedKeys: [] }), onHttpTrigger)];
 };
