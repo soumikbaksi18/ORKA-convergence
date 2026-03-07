@@ -66,3 +66,49 @@ export async function getSeriesByTicker(
   );
   return response.data;
 }
+
+/** Orderbook: yes/no arrays of [price_cents, count] */
+export interface OrderbookResponse {
+  orderbook: { yes: [number, number][]; no: [number, number][] };
+  orderbook_fp?: unknown;
+}
+
+export async function getOrderbook(
+  ticker: string,
+  depth: number = 10
+): Promise<OrderbookResponse> {
+  const response = await kalshiApi.get<OrderbookResponse>(
+    `/markets/${ticker}/orderbook`,
+    { params: { depth } }
+  );
+  return response.data;
+}
+
+export interface Trade {
+  trade_id: string;
+  ticker: string;
+  yes_price: number;
+  no_price: number;
+  count: number;
+  taker_side: string;
+  created_time: string;
+  [key: string]: unknown;
+}
+
+export interface TradesResponse {
+  trades: Trade[];
+  cursor: string;
+}
+
+export async function getTrades(params: {
+  ticker?: string;
+  limit?: number;
+  cursor?: string;
+  min_ts?: number;
+  max_ts?: number;
+} = {}): Promise<TradesResponse> {
+  const response = await kalshiApi.get<TradesResponse>("/markets/trades", {
+    params: params as Record<string, string | number>,
+  });
+  return response.data;
+}

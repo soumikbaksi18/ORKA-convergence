@@ -1,5 +1,5 @@
 import { Router, Request, Response } from "express";
-import { getMarkets, getMarket } from "../services/kalshiClient";
+import { getMarkets, getMarket, getOrderbook, getTrades } from "../services/kalshiClient";
 import { MarketParams } from "../types/kalshi";
 import { AxiosError } from "axios";
 
@@ -30,6 +30,27 @@ router.get("/", async (req: Request, res: Response) => {
   } catch (err) {
     const error = err as AxiosError<{ message?: string }>;
     console.error("Error fetching markets:", error.message);
+    res.status(error.response?.status || 500).json({
+      success: false,
+      error: error.response?.data?.message || error.message,
+    });
+  }
+});
+
+// GET /api/markets/:ticker/orderbook — Fetch orderbook for a market (must be before /:ticker)
+router.get("/:ticker/orderbook", async (req: Request, res: Response) => {
+  try {
+    const { ticker } = req.params;
+    const depth = req.query.depth ? parseInt(req.query.depth as string, 10) : 10;
+    const data = await getOrderbook(ticker as string, depth);
+
+    res.json({
+      success: true,
+      data: data.orderbook,
+    });
+  } catch (err) {
+    const error = err as AxiosError<{ message?: string }>;
+    console.error(`Error fetching orderbook ${req.params.ticker}:`, error.message);
     res.status(error.response?.status || 500).json({
       success: false,
       error: error.response?.data?.message || error.message,
