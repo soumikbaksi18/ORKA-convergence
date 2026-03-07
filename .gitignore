@@ -1,5 +1,7 @@
 # Dependencies
 node_modules/
+frontend/node_modules
+backend/kalshi-integration/node_modules
 frontend/.pnp
 frontend/.pnp.*
 frontend/.yarn/*
