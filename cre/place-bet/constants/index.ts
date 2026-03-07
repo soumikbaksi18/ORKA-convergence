@@ -1,0 +1,13 @@
+export const KALSHI = {
+  BASE_URL: "https://demo-api.kalshi.co",
+};
+
+export const POLYMARKET = {
+  BASE_URL: "https://gamma-api.polymarket.com",
+  HOST: "https://clob.polymarket.com",
+  CHAIN_ID: 137,
+  SIGNATURE_TYPE: 0, // EOA
+  EXCHANGE: "0x4bFb41d5B3570DeFd03C39a9A4D8dE6Bd8B8982E",
+  NEG_RISK_EXCHANGE: "0xC5d563A36AE78145C45a50134d48A1215220f80a",
+  COLLATERAL_DECIMALS: 6,
+};

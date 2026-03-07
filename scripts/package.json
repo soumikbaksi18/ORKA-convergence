@@ -1,0 +1,19 @@
+{
+  "name": "scripts",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "scripts": {
+    "kalshi:balance": "bun run src/kalshi/balance.ts",
+    "kalshi:headers": "bun run src/kalshi/headers.ts",
+    "kalshi:order-headers": "bun run src/kalshi/order-headers.ts",
+    "kalshi:create-order": "bun run src/kalshi/create-order.ts",
+    "kalshi:update-test": "bun run src/kalshi/update-test-k.ts"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}
