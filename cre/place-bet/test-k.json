@@ -1,13 +1,13 @@
 {
   "platform": "kalshi",
-  "ticker": "KXQUICKSETTLE-26MAR07H1250-2",
+  "ticker": "KXNHLAST-26MAR07NYRNJ-NYRWCUYLLE50-1",
   "action": "buy",
   "side": "yes",
   "count": 1,
   "price": 55,
   "kalshiAuth": {
     "accessKey": "9f890cf5-d2b0-4e38-8955-42340b759005",
-    "accessSignature": "CisP1oK1+MpdYXztLCQ5Kse9im1FNjvtag9rsTOy1+AhdTvg6Ak5BdgOOBzkZF4v2POVErhapfr7wYoqCNT5uzIb53ymASe0hImEy1IxgFNGHgXOk69dK5ZgDS5Vg6XNstrRdWF5qMfDtCYvt/lt7mMbhQE+LyFYvPSpqti0SFr1tp9IDp3MZ6Oy9Sp73H3CeZsWWoZbJ6FrgqWhs7TeUmZZW7yhMNPTo7vulSJQ5iALrY9bSji2T4IQ3FFB+9UCqQvPX/lKIxo4yICXJm2FjoUHND3DQLYFcx58tSW19DDQRc0Q5+JqSbuuCdGT9xhWHEUbcCrJXMxOYO+DVCHWPw==",
-    "accessTimestamp": "1772905724425"
+    "accessSignature": "iZTr81Gqe3MDFvbGAeGPycFhrx7NU2edIRTEwzCNAMCxO0eJKvVqoYGu95KT4L3boDImUUpipBegbovB9j8Xfq8MBWEQWTYZkNbiLC9P2sqKdI/NQL3YmC1ZDJaB2MQgQ9EIXPGSIMudfge0GRz+mturO108Mg4PZZaFRPOhjtlkpvOqMj1jaRJMrFWzPJxDKzFRm84oDm/QqoJtuO6Q8SIZOMqWb6SYJK2d8ME93v+EV/i/pTBhyji/cgGUd40gkAqieNlsYMSmbt0rJG913Z9+fhab64arBd09altcBf6lkXdxrEc3PqEmrT5luEeF2lYYKiHFpEgDxjiCWRcCDQ==",
+    "accessTimestamp": "1772906872102"
   }
 }
