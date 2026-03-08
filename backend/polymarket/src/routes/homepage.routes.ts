@@ -3,6 +3,6 @@ import { fetchHomepageStats } from "../controllers/homepage.controller";
 
 const homepage = new Hono();
 
-homepage.get("/fetch-homepage-stats", fetchHomepageStats);
+homepage.get("/fetch-homepage-data", fetchHomepageStats);
 
 export default homepage;
