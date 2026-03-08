@@ -133,6 +133,7 @@ export interface GetEventsParams {
   id?: string;
   ticker?: string;
   category?: string;
+  tag?: string;
 }
 
 export async function getEvents(params?: GetEventsParams): Promise<PolymarketEvent[]> {
@@ -147,4 +148,8 @@ export async function getEventBySlug(slug: string): Promise<PolymarketEvent[]> {
 
 export async function getEventById(id: string): Promise<PolymarketEvent[]> {
   return getEvents({ id });
+}
+
+export async function getEventDetail(id: string): Promise<PolymarketEvent> {
+  return request<PolymarketEvent>(POLYMARKET_BASE_URL, `/events/${id}`);
 }
