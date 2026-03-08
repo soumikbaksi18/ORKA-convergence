@@ -1,4 +1,5 @@
-import { clobClient } from "../client";
+import { request } from "../../helpers/request";
+import { CLOB_BASE_URL } from "../../constants";
 
 export interface OrderbookLevel {
   price: string;
@@ -19,7 +20,9 @@ export interface Orderbook {
 
 export const getOrderBook = async (clobTokenId: string): Promise<Orderbook> => {
   try {
-    const book: Orderbook = await clobClient.getOrderBook(clobTokenId);
+    const book = await request<Orderbook>(CLOB_BASE_URL, "/book", {
+      params: { token_id: clobTokenId },
+    });
     return book;
   } catch (err: any) {
     console.log(err);
