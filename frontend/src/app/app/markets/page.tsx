@@ -27,7 +27,7 @@ export default function MarketsPage() {
     setLoading(true);
     setError(null);
     try {
-      const res = await fetchMarkets({ status: "open", limit: 50 });
+      const res = await fetchMarkets({ status: "open", limit: 50, mve_filter: "exclude" });
       setMarkets(res.data ?? []);
     } catch (e) {
       setError(e instanceof Error ? e.message : "Failed to load markets");

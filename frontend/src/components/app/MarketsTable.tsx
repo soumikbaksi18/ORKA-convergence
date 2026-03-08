@@ -1,8 +1,19 @@
 import Link from "next/link";
 import type { Market } from "@/types/markets";
+import {
+  getYesBid,
+  getYesAsk,
+  getNoBid,
+  getLastPrice,
+  getVolume,
+  getVolume24h,
+  getOpenInterest,
+  getMarketTitle,
+  getExpiration,
+} from "@/lib/api/kalshi";
 
 function formatCents(c: number) {
-  return `${c}¢`;
+  return `${c}\u00A2`;
 }
 
 function formatCompact(n: number): string {
@@ -19,7 +30,7 @@ function formatDate(iso: string) {
       year: "numeric",
     });
   } catch {
-    return "—";
+    return "\u2014";
   }
 }
 
@@ -72,12 +83,22 @@ export function MarketsTable({ markets, isLoading }: MarketsTableProps) {
         </thead>
         <tbody>
           {markets.map((m) => {
+            const yesBid = getYesBid(m);
+            const yesAsk = getYesAsk(m);
+            const noBid = getNoBid(m);
+            const lastPrice = getLastPrice(m);
+            const vol = getVolume(m);
+            const vol24h = getVolume24h(m);
+            const oi = getOpenInterest(m);
+            const title = getMarketTitle(m);
+            const expTime = getExpiration(m);
+
             const spread =
-              m.yes_ask != null && m.yes_bid != null
-                ? ((m.yes_ask - m.yes_bid) / 100) * 100
+              yesAsk > 0 && yesBid > 0
+                ? yesAsk - yesBid
                 : null;
-            const expTime = m.expiration_time ?? m.close_time ?? "";
             const d = expTime ? daysLeft(expTime) : null;
+
             return (
               <tr
                 key={m.ticker}
@@ -91,28 +112,26 @@ export function MarketsTable({ markets, isLoading }: MarketsTableProps) {
                     <div className="mt-0.5 h-9 w-9 shrink-0 rounded bg-white/10" />
                     <div>
                       <p className="font-medium text-white hover:text-purple-300">
-                        {m.title}
+                        {title}
                       </p>
                       <p className="mt-0.5 text-xs text-zinc-500">
-                        {d != null ? `${d}d` : "—"} · {formatCents(m.yes_bid ?? 0)} Y{" "}
-                        {formatCents(m.no_bid ?? 0)} N
+                        {d != null ? `${d}d` : "—"} · {formatCents(yesBid)} Y{" "}
+                        {formatCents(noBid)} N
                       </p>
                     </div>
                   </Link>
                 </td>
                 <td className="px-4 py-3 text-zinc-300">
-                  {formatCents(m.last_price ?? 0)}
+                  {formatCents(lastPrice)}
                 </td>
                 <td className="px-4 py-3 text-zinc-400">
-                  {m.volume_24h != null ? formatCompact(m.volume_24h) : "$0"}
+                  {vol24h > 0 ? formatCompact(vol24h) : "$0"}
                 </td>
                 <td className="px-4 py-3 text-zinc-400">
-                  {m.volume != null ? formatCompact(m.volume) : "—"}
+                  {vol > 0 ? formatCompact(vol) : "—"}
                 </td>
                 <td className="px-4 py-3 text-zinc-400">
-                  {m.open_interest != null
-                    ? formatCompact(m.open_interest)
-                    : "—"}
+                  {oi > 0 ? formatCompact(oi) : "—"}
                 </td>
                 <td className="px-4 py-3 text-zinc-400">
                   {spread != null ? `${spread.toFixed(2)}%` : "—"}
@@ -126,12 +145,12 @@ export function MarketsTable({ markets, isLoading }: MarketsTableProps) {
                       <div
                         className="h-full rounded-full bg-purple-500"
                         style={{
-                          width: `${m.last_price ?? 0}%`,
+                          width: `${lastPrice}%`,
                         }}
                       />
                     </div>
                     <span className="text-zinc-300">
-                      {m.last_price != null ? `${m.last_price}%` : "—"}
+                      {lastPrice > 0 ? `${lastPrice}%` : "—"}
                     </span>
                   </div>
                 </td>

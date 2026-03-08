@@ -5,25 +5,26 @@ import { checkKalshiHealth } from "@/lib/api/kalshi";
 
 export function AppStatusBar() {
   const [kalshiLatency, setKalshiLatency] = useState<number | null>(null);
+  const [kalshiOnline, setKalshiOnline] = useState<boolean | null>(null);
 
   useEffect(() => {
-    checkKalshiHealth().then(({ latencyMs }) => {
-      if (latencyMs != null) setKalshiLatency(latencyMs);
-    });
-    const t = setInterval(() => {
-      checkKalshiHealth().then(({ latencyMs }) => {
-        if (latencyMs != null) setKalshiLatency(latencyMs);
+    const poll = () => {
+      checkKalshiHealth().then(({ ok, latencyMs }) => {
+        setKalshiOnline(ok);
+        setKalshiLatency(latencyMs ?? null);
       });
-    }, 10000);
+    };
+    poll();
+    const t = setInterval(poll, 10000);
     return () => clearInterval(t);
   }, []);
 
   return (
     <footer className="flex h-9 items-center justify-between border-t border-white/10 bg-black px-4 text-xs text-zinc-500">
       <div className="flex items-center gap-4">
-        <span className="flex items-center gap-1.5 text-emerald-500">
-          <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-          ONLINE
+        <span className={`flex items-center gap-1.5 ${kalshiOnline ? "text-emerald-500" : kalshiOnline === false ? "text-red-400" : "text-zinc-500"}`}>
+          <span className={`h-1.5 w-1.5 rounded-full ${kalshiOnline ? "bg-emerald-500" : kalshiOnline === false ? "bg-red-400" : "bg-zinc-500"}`} />
+          {kalshiOnline ? "ONLINE" : kalshiOnline === false ? "OFFLINE" : "..."}
         </span>
         <span
           className={
