@@ -1,6 +1,6 @@
-# Convergence — Unified Prediction Markets Platform
+# ORKA — Unified Prediction Markets Platform
 
-Convergence is a cross-platform prediction markets aggregator that unifies **Kalshi** and **Polymarket** into a single interface, powered by **Chainlink CRE (Compute Runtime Environment)** for trustless, on-chain order execution. An integrated AI agent provides real-time market analysis, helping traders make informed decisions across both centralized and decentralized prediction markets.
+ORKA is a cross-platform prediction markets aggregator that unifies **Kalshi** and **Polymarket** into a single interface, powered by **Chainlink CRE (Compute Runtime Environment)** for trustless, on-chain order execution. An integrated AI agent provides real-time market analysis, helping traders make informed decisions across both centralized and decentralized prediction markets.
 
 ---
 
@@ -25,7 +25,7 @@ Prediction markets are fragmented across multiple platforms — Kalshi (regulate
 
 ## Solution
 
-Convergence solves this by:
+ORKA solves this by:
 
 1. **Aggregating markets** from Kalshi and Polymarket into a single, filterable dashboard with live orderbooks and price data
 2. **Executing trades trustlessly** via a Chainlink CRE Workflow that validates markets, derives API credentials on-chain, and places orders across both platforms
@@ -133,7 +133,7 @@ All Chainlink CRE integration files are located in the [`cre/place-bet/`](cre/pl
 ## Project Structure
 
 ```
-convergence-prediction-markets/
+ORKA-prediction-markets/
 ├── frontend/                        # Next.js 16 application
 │   ├── src/
 │   │   ├── app/
@@ -190,8 +190,8 @@ convergence-prediction-markets/
 
 ```bash
 # Clone the repository
-git clone https://github.com/<your-username>/convergence-prediction-markets.git
-cd convergence-prediction-markets
+git clone https://github.com/<your-username>/ORKA-prediction-markets.git
+cd ORKA-prediction-markets
 
 # Frontend
 cd frontend && npm install && cd ..
