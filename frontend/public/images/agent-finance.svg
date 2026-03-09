@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="240" viewBox="0 0 400 240" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="50%" style="stop-color:#1e293b"/>
+      <stop offset="100%" style="stop-color:#0f172a"/>
+    </linearGradient>
+    <linearGradient id="line" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#22c55e;stop-opacity:0.3"/>
+      <stop offset="100%" style="stop-color:#22c55e;stop-opacity:0.8"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="240" fill="url(#bg)"/>
+  <!-- Chart-like line -->
+  <path d="M0 180 Q50 160 100 140 T200 100 T300 80 T400 60" stroke="url(#line)" strokeWidth="3" fill="none" strokeLinecap="round"/>
+  <path d="M0 180 Q50 160 100 140 T200 100 T300 80 T400 60 V240 H0 Z" fill="url(#line)" fillOpacity="0.15"/>
+  <!-- FAANG label -->
+  <text x="200" y="120" textAnchor="middle" fill="rgba(255,255,255,0.9)" fontSize="28" fontFamily="system-ui, sans-serif" fontWeight="700">FAANG</text>
+  <text x="200" y="150" textAnchor="middle" fill="rgba(255,255,255,0.5)" fontSize="12" fontFamily="system-ui, sans-serif">Finance " Markets</text>
+</svg>

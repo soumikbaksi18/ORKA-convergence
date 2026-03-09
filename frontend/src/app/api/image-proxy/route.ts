@@ -8,6 +8,8 @@ const ALLOWED_IMAGE_ORIGINS = [
   "https://gamma-api.polymarket.com",
   "https://polymarket.com",
   "https://clob.polymarket.com",
+  "https://images.unsplash.com",
+  "https://upload.wikimedia.org",
 ];
 
 function isAllowedUrl(url: string): boolean {

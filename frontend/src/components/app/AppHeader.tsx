@@ -1,14 +1,5 @@
 import Link from "next/link";
 
-const TICKERS = [
-  { pair: "BNB/USD", price: "625.13", change: "-0.26%" },
-  { pair: "SOL/USD", price: "83.73", change: "-0.78%" },
-  { pair: "XRP/USD", price: "1.36", change: "+0.13%" },
-  { pair: "ADA/USD", price: "0.26", change: "-0.47%" },
-  { pair: "DOGE/USD", price: "0.09", change: "-0.15%" },
-  { pair: "AVAX/USD", price: "—", change: "" },
-];
-
 export function AppHeader() {
   return (
     <header className="flex h-14 items-center justify-between border-b border-white/10 bg-black px-4">
@@ -16,28 +7,23 @@ export function AppHeader() {
         <Link href="/" className="text-lg font-semibold text-white">
           Convergence
         </Link>
-        <div className="hidden items-center gap-4 overflow-x-auto text-xs text-zinc-400 md:flex">
-          {TICKERS.map((t) => (
-            <span key={t.pair}>
-              {t.pair} ${t.price}
-              {t.change && (
-                <span
-                  className={
-                    t.change.startsWith("+")
-                      ? "text-emerald-400"
-                      : "text-red-400"
-                  }
-                >
-                  {" "}
-                  {t.change}
-                </span>
-              )}
-            </span>
-          ))}
-        </div>
+        <nav className="hidden items-center gap-1 md:flex">
+          <Link
+            href="/app/markets"
+            className="rounded-md px-3 py-2 text-sm font-medium text-zinc-300 transition-colors hover:bg-white/5 hover:text-white"
+          >
+            Markets
+          </Link>
+          <Link
+            href="/app/agent-markets"
+            className="rounded-md px-3 py-2 text-sm font-medium text-zinc-300 transition-colors hover:bg-white/5 hover:text-white"
+          >
+            Agent Markets
+          </Link>
+        </nav>
       </div>
-      <div className="flex items-center gap-2">
-        <div className="hidden items-center rounded border border-white/10 bg-white/5 px-3 py-1.5 sm:flex">
+      <div className="flex items-center gap-3">
+        <div className="hidden items-center rounded-lg border border-white/10 bg-white/5 px-3 py-1.5 sm:flex min-w-[140px]">
           <span className="text-zinc-400">Search</span>
           <svg
             className="ml-2 h-4 w-4 text-zinc-500"
@@ -53,11 +39,19 @@ export function AppHeader() {
             />
           </svg>
         </div>
-        <span className="text-xs text-zinc-500">PORTFOLIO —</span>
-        <span className="text-xs text-zinc-500">CASH —</span>
+        <div className="flex items-center gap-4">
+          <div className="rounded-lg border border-white/10 bg-white/5 px-4 py-2 min-w-[120px]">
+            <p className="text-[10px] font-semibold uppercase tracking-wider text-zinc-500">Portfolio</p>
+            <p className="mt-0.5 text-sm font-semibold text-white">—</p>
+          </div>
+          <div className="rounded-lg border border-white/10 bg-white/5 px-4 py-2 min-w-[100px]">
+            <p className="text-[10px] font-semibold uppercase tracking-wider text-zinc-500">Cash</p>
+            <p className="mt-0.5 text-sm font-semibold text-white">—</p>
+          </div>
+        </div>
         <button
           type="button"
-          className="rounded bg-purple-600 px-3 py-1.5 text-xs font-medium text-white shadow-[0_0_12px_rgba(168,85,247,0.4)]"
+          className="rounded-lg bg-purple-600 px-4 py-2 text-sm font-medium text-white shadow-[0_0_12px_rgba(168,85,247,0.4)]"
         >
           Deposit
         </button>

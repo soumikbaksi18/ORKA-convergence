@@ -9,6 +9,15 @@ export function AppStatusBar() {
   const [kalshiOnline, setKalshiOnline] = useState<boolean | null>(null);
   const [polyLatency, setPolyLatency] = useState<number | null>(null);
   const [polyOnline, setPolyOnline] = useState<boolean | null>(null);
+  const [time, setTime] = useState<string | null>(null);
+
+  useEffect(() => {
+    const updateTime = () =>
+      setTime(new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }));
+    updateTime();
+    const t = setInterval(updateTime, 1000);
+    return () => clearInterval(t);
+  }, []);
 
   useEffect(() => {
     const poll = () => {
@@ -51,7 +60,7 @@ export function AppStatusBar() {
       <div className="hidden sm:block">MCP: 12/12 Tools</div>
       <div className="flex items-center gap-4">
         <span className="hidden md:inline">Model: GPT-4o</span>
-        <span>{new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}</span>
+        <span>{time ?? "—"}</span>
       </div>
     </footer>
   );
