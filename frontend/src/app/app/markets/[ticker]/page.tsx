@@ -29,6 +29,7 @@ import {
   type PolymarketPriceHistoryPoint,
 } from "@/lib/api/polymarket";
 import type { Market, KalshiEvent } from "@/types/markets";
+import { MarketAIAnalysis } from "@/components/app/MarketAIAnalysis";
 
 /* ────────────────────────────── helpers ────────────────────────────── */
 
@@ -1253,10 +1254,14 @@ export default function MarketPage() {
             </div>
           </div>
 
-          {/* Right sidebar: Quick Trade */}
-          <div className="order-first lg:order-last">
+          {/* Right sidebar: Quick Trade + AI Analysis */}
+          <div className="order-first flex flex-col gap-6 lg:order-last">
             <TradingSidebar
               market={market}
+              eventTitle={eventTitle}
+              siblingMarkets={siblingMarkets.length > 0 ? siblingMarkets : [market]}
+            />
+            <MarketAIAnalysis
               eventTitle={eventTitle}
               siblingMarkets={siblingMarkets.length > 0 ? siblingMarkets : [market]}
             />
