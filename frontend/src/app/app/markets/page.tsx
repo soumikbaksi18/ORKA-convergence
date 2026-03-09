@@ -14,8 +14,26 @@ import type { Market } from "@/types/markets";
 
 type Source = "kalshi" | "polymarket" | "opinion" | "predict" | "probable";
 
+/** Polymarket Gamma API tag_slug per category. No tag for Trending/New (sort-only). */
+const POLYMARKET_CATEGORY_TO_TAG_SLUG: Record<string, string | undefined> = {
+  Trending: undefined,
+  New: undefined,
+  Politics: "politics",
+  Sports: "sports",
+  Crypto: "crypto",
+  Finance: "finance",
+  Geopolitics: "geopolitics",
+  Tech: "tech",
+  Culture: "culture",
+  Elections: "elections",
+};
+
+function getPolymarketTagSlugForCategory(category: string): string | undefined {
+  return POLYMARKET_CATEGORY_TO_TAG_SLUG[category];
+}
+
 export default function MarketsPage() {
-  const [source, setSource] = useState<Source>("kalshi");
+  const [source, setSource] = useState<Source>("polymarket");
   const [category, setCategory] = useState("Trending");
   const [markets, setMarkets] = useState<Market[]>([]);
   const [loading, setLoading] = useState(true);
@@ -34,10 +52,18 @@ export default function MarketsPage() {
         });
         setMarkets(res.data ?? []);
       } else if (source === "polymarket") {
+        const order =
+          category === "New"
+            ? "start_date"
+            : "volume_24hr";
+        const tagSlug = getPolymarketTagSlugForCategory(category);
         const events = await fetchPolymarketEvents({
           limit: 50,
           offset: 0,
           active: true,
+          order,
+          ascending: false,
+          ...(tagSlug != null && { tag_slug: tagSlug }),
         });
         const normalized = polymarketEventsToMarkets(events);
         setMarkets(normalized);
@@ -50,7 +76,7 @@ export default function MarketsPage() {
     } finally {
       setLoading(false);
     }
-  }, [source]);
+  }, [source, category]);
 
   useEffect(() => {
     loadMarkets();
@@ -162,13 +188,12 @@ export default function MarketsPage() {
         </div>
       )}
 
-      {/* Table (list view); grid view reuses same data in grid layout later if needed */}
-      {viewMode === "list" && (
-        <MarketsTable markets={markets} isLoading={loading} />
-      )}
-      {viewMode === "grid" && (
-        <MarketsTable markets={markets} isLoading={loading} />
-      )}
+      {/* List or grid (blocks) view — 3 cards per row on large screens */}
+      <MarketsTable
+        markets={markets}
+        isLoading={loading}
+        viewMode={viewMode}
+      />
     </div>
   );
 }

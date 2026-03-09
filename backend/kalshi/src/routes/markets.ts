@@ -10,7 +10,7 @@ import { MarketParams, CandlestickParams } from "../types/kalshi";
 import type { Market } from "../types/kalshi";
 import { AxiosError } from "axios";
 
-const KALSHI_ORIGIN = "https://api.elections.kalshi.com";
+const KALSHI_WEB_ORIGIN = "https://kalshi.com";
 
 function toAbsoluteImageUrl(url: string | undefined): string | undefined {
   if (!url || typeof url !== "string") return undefined;
@@ -18,7 +18,9 @@ function toAbsoluteImageUrl(url: string | undefined): string | undefined {
   if (!trimmed) return undefined;
   if (trimmed.startsWith("http://") || trimmed.startsWith("https://"))
     return trimmed;
-  return `${KALSHI_ORIGIN}${trimmed.startsWith("/") ? "" : "/"}${trimmed}`;
+  if (trimmed.startsWith("//")) return `https:${trimmed}`;
+  const path = trimmed.startsWith("/") ? trimmed : `/${trimmed}`;
+  return `${KALSHI_WEB_ORIGIN}${path}`;
 }
 
 const router = Router();

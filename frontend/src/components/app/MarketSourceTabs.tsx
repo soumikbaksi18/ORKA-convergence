@@ -3,8 +3,8 @@
 type Source = "kalshi" | "polymarket" | "opinion" | "predict" | "probable";
 
 const SOURCES: { id: Source; label: string }[] = [
-  { id: "kalshi", label: "Kalshi" },
   { id: "polymarket", label: "Polymarket" },
+  { id: "kalshi", label: "Kalshi" },
   { id: "opinion", label: "Opinion" },
   { id: "predict", label: "Predict" },
   { id: "probable", label: "Probable" },

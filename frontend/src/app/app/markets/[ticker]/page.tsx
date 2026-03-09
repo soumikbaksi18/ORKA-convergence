@@ -180,17 +180,29 @@ function OutcomeThumbnail({
   imageUrl?: string | null;
   label: string;
 }) {
-  const [failed, setFailed] = useState(false);
-  const showImage = imageUrl && !failed;
+  const [directFailed, setDirectFailed] = useState(false);
+  const [proxyFailed, setProxyFailed] = useState(false);
+  const useProxy = directFailed && !!imageUrl;
+  const proxySrc = useProxy
+    ? `/api/image-proxy?url=${encodeURIComponent(imageUrl!)}`
+    : null;
+  const showDirect = imageUrl && !directFailed;
+  const showProxy = useProxy && proxySrc && !proxyFailed;
+  const showImage = showDirect || showProxy;
+  const src = showProxy ? proxySrc : imageUrl ?? null;
 
   return (
     <div className="flex h-8 w-8 shrink-0 overflow-hidden rounded-full bg-white/10">
-      {showImage ? (
+      {showImage && src ? (
         <img
-          src={imageUrl}
+          key={src}
+          src={src}
           alt=""
           className="h-full w-full object-cover"
-          onError={() => setFailed(true)}
+          onError={() => {
+            if (showProxy) setProxyFailed(true);
+            else setDirectFailed(true);
+          }}
         />
       ) : (
         <span className="flex h-full w-full items-center justify-center text-xs font-bold text-zinc-300">
@@ -220,11 +232,11 @@ function OutcomesTable({
     <div>
       <table className="w-full text-sm">
         <thead>
-          <tr className="border-b border-white/10 text-left text-zinc-500">
-            <th className="pb-3 font-medium">Outcome</th>
-            <th className="pb-3 text-center font-medium">Chance</th>
-            <th className="pb-3 text-center font-medium">Yes</th>
-            <th className="pb-3 text-center font-medium">No</th>
+          <tr className="border-b border-white/10 text-left text-[10px] font-semibold uppercase tracking-wider text-zinc-500">
+            <th className="pb-3 pr-4">Outcome</th>
+            <th className="pb-3 text-center">Chance</th>
+            <th className="pb-3 text-center">Yes</th>
+            <th className="pb-3 text-center">No</th>
           </tr>
         </thead>
         <tbody>
@@ -296,9 +308,9 @@ function OutcomesTable({
         <button
           type="button"
           onClick={() => setExpanded(true)}
-          className="mt-3 text-sm font-medium text-emerald-400 hover:text-emerald-300"
+          className="mt-4 w-full rounded-xl border border-white/10 bg-white/[0.04] py-2.5 text-sm font-medium text-zinc-400 transition-colors hover:bg-white/[0.08] hover:text-white"
         >
-          {remaining} more
+          +{remaining} more outcomes
         </button>
       )}
     </div>
@@ -315,22 +327,16 @@ function MarketRules({ market }: { market: Market }) {
   if (!primary && !secondary) return null;
 
   return (
-    <div className="rounded-xl border border-white/10 bg-[#141418] p-6">
-      <div className="mb-4 flex items-center justify-between">
-        <h3 className="text-lg font-semibold text-white">Market Rules</h3>
-      </div>
-
-      {/* Outcome tab */}
-      <div className="mb-4 inline-flex rounded-lg bg-white/5 p-1">
-        <span className="rounded-md bg-white/10 px-3 py-1.5 text-sm font-medium text-white">
+    <div className="rounded-2xl border border-white/10 bg-[#0f0f12] p-6 shadow-lg">
+      <h3 className="mb-4 text-sm font-semibold text-white">Market Rules</h3>
+      <div className="mb-4 inline-flex rounded-xl bg-white/[0.06] px-3 py-2">
+        <span className="text-sm font-medium text-white">
           {getMarketOptionLabel(market)}
         </span>
       </div>
-
       {primary && (
         <p className="mb-4 text-sm leading-relaxed text-zinc-300">{primary}</p>
       )}
-
       {secondary && (
         <>
           {showFull && (
@@ -341,17 +347,15 @@ function MarketRules({ market }: { market: Market }) {
           <button
             type="button"
             onClick={() => setShowFull(!showFull)}
-            className="flex items-center gap-1 text-sm text-zinc-500 hover:text-white"
+            className="flex items-center gap-1.5 text-sm text-zinc-500 transition-colors hover:text-white"
           >
             {showFull ? "Hide full rules" : "View full rules"}
             <span className="text-xs">{showFull ? "\u25B2" : "\u25BC"}</span>
           </button>
         </>
       )}
-
-      {/* Timeline and payout */}
-      <div className="mt-6 flex items-center gap-2 text-sm text-zinc-500">
-        <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <div className="mt-6 flex items-center gap-2 border-t border-white/10 pt-5 text-sm text-zinc-500">
+        <svg className="h-4 w-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
         <span>Timeline and payout</span>
@@ -361,14 +365,14 @@ function MarketRules({ market }: { market: Market }) {
           <span>Expected: {formatDate(market.expected_expiration_time as string)}</span>
         )}
         {market.early_close_condition && (
-          <p className="mt-1 text-zinc-600">{market.early_close_condition}</p>
+          <p className="mt-1 text-zinc-500">{market.early_close_condition}</p>
         )}
       </div>
     </div>
   );
 }
 
-/* ───────────────────── Trading Sidebar ─────────────────────────────── */
+/* ───────────────────── Quick Trade Sidebar ─────────────────────────── */
 
 function TradingSidebar({
   market,
@@ -385,25 +389,37 @@ function TradingSidebar({
   const selected = siblingMarkets.find((m) => m.ticker === selectedTicker) ?? market;
   const yesPrice = tab === "buy" ? getYesAsk(selected) : getYesBid(selected);
   const noPrice = tab === "buy" ? getNoAsk(selected) : getNoBid(selected);
+  const oi = getOpenInterest(selected);
 
   return (
-    <div className="sticky top-6 rounded-xl border border-white/10 bg-[#141418]">
-      {/* Title */}
-      <div className="border-b border-white/10 p-5">
-        <h3 className="text-sm font-semibold text-white leading-snug">
+    <div className="sticky top-6 overflow-hidden rounded-2xl border border-white/10 bg-[#0f0f12] shadow-xl">
+      <div className="border-b border-white/10 bg-white/[0.02] px-5 py-4">
+        <p className="text-[10px] font-semibold uppercase tracking-wider text-zinc-500">
+          Quick Trade
+        </p>
+        <h3 className="mt-1 line-clamp-2 text-sm font-medium leading-snug text-white">
           {eventTitle}
         </h3>
+        <div className="mt-3 flex items-center gap-2 text-xs">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/20 px-2 py-0.5 text-emerald-400">
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+            active
+          </span>
+          {oi > 0 && (
+            <span className="text-zinc-500">OI: {formatCompact(oi)}</span>
+          )}
+        </div>
       </div>
 
-      <div className="p-5">
+      <div className="space-y-5 p-5">
         {/* Buy / Sell tabs */}
-        <div className="mb-4 flex rounded-lg bg-white/5 p-1">
+        <div className="flex rounded-xl bg-white/[0.04] p-1">
           <button
             type="button"
             onClick={() => setTab("buy")}
-            className={`flex-1 rounded-md py-2 text-sm font-semibold transition-colors ${
+            className={`flex-1 rounded-lg py-2.5 text-sm font-semibold transition-all ${
               tab === "buy"
-                ? "bg-emerald-600 text-white"
+                ? "bg-emerald-500/20 text-emerald-400 shadow-sm"
                 : "text-zinc-400 hover:text-white"
             }`}
           >
@@ -412,9 +428,9 @@ function TradingSidebar({
           <button
             type="button"
             onClick={() => setTab("sell")}
-            className={`flex-1 rounded-md py-2 text-sm font-semibold transition-colors ${
+            className={`flex-1 rounded-lg py-2.5 text-sm font-semibold transition-all ${
               tab === "sell"
-                ? "bg-red-600 text-white"
+                ? "bg-red-500/20 text-red-400 shadow-sm"
                 : "text-zinc-400 hover:text-white"
             }`}
           >
@@ -422,15 +438,15 @@ function TradingSidebar({
           </button>
         </div>
 
-        {/* Outcome selector */}
-        <div className="mb-4">
-          <label className="mb-1.5 block text-xs text-zinc-500">Outcome</label>
+        {/* Outcome */}
+        <div>
+          <label className="mb-2 block text-xs font-medium text-zinc-500">Outcome</label>
           {siblingMarkets.length > 1 ? (
             <select
               value={selectedTicker}
               onChange={(e) => setSelectedTicker(e.target.value)}
               title="Select outcome"
-              className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2.5 text-sm text-white outline-none focus:border-emerald-500/50"
+              className="w-full rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-white outline-none transition-colors focus:border-emerald-500/40 focus:ring-1 focus:ring-emerald-500/20"
             >
               {siblingMarkets.map((m) => (
                 <option key={m.ticker} value={m.ticker} className="bg-zinc-900">
@@ -439,44 +455,50 @@ function TradingSidebar({
               ))}
             </select>
           ) : (
-            <div className="rounded-lg border border-white/10 bg-white/5 px-3 py-2.5 text-sm text-white">
+            <div className="rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-white">
               {getMarketOptionLabel(market)}
             </div>
           )}
         </div>
 
-        {/* Prices */}
-        <div className="mb-4 grid grid-cols-2 gap-3">
-          <div className="rounded-lg bg-white/5 p-3 text-center">
-            <p className="text-xs text-zinc-500">Yes</p>
-            <p className="mt-1 text-lg font-bold text-emerald-400">
-              {yesPrice > 0 ? formatCents(yesPrice) : "\u2014"}
-            </p>
-          </div>
-          <div className="rounded-lg bg-white/5 p-3 text-center">
-            <p className="text-xs text-zinc-500">No</p>
-            <p className="mt-1 text-lg font-bold text-red-400">
-              {noPrice > 0 ? formatCents(noPrice) : "\u2014"}
-            </p>
-          </div>
+        {/* Primary action buttons: Buy YES / Buy NO */}
+        <div className="grid grid-cols-2 gap-3">
+          <button
+            type="button"
+            className="flex flex-col items-center justify-center rounded-xl border border-emerald-500/30 bg-emerald-500/10 py-4 transition-colors hover:bg-emerald-500/20"
+          >
+            <span className="text-xs font-medium text-emerald-400/90">Yes</span>
+            <span className="mt-1 text-lg font-bold text-emerald-400">
+              {yesPrice > 0 ? formatCents(yesPrice) : "—"}
+            </span>
+          </button>
+          <button
+            type="button"
+            className="flex flex-col items-center justify-center rounded-xl border border-red-500/30 bg-red-500/10 py-4 transition-colors hover:bg-red-500/20"
+          >
+            <span className="text-xs font-medium text-red-400/90">No</span>
+            <span className="mt-1 text-lg font-bold text-red-400">
+              {noPrice > 0 ? formatCents(noPrice) : "—"}
+            </span>
+          </button>
         </div>
 
-        {/* No contracts message */}
-        <div className="mb-3 rounded-lg border border-white/10 bg-white/[0.03] px-4 py-6 text-center">
-          <p className="text-sm text-zinc-400">No contracts available now</p>
-        </div>
+        <p className="text-center text-xs text-zinc-500">
+          No contracts available now
+        </p>
 
         <button
           type="button"
-          className="w-full text-center text-sm text-emerald-400 hover:text-emerald-300"
+          className="w-full rounded-xl border border-white/10 bg-white/[0.04] py-2.5 text-sm font-medium text-emerald-400 transition-colors hover:bg-white/[0.08] hover:text-emerald-300"
         >
           Place a limit order instead
         </button>
 
-        {/* Auth notice */}
-        <div className="mt-4 flex items-start gap-2 rounded-lg border border-white/10 bg-white/5 p-3 text-xs text-zinc-500">
-          <span className="mt-0.5">&#9889;</span>
-          <p>Configure Kalshi API credentials to enable live trading.</p>
+        <div className="flex items-start gap-3 rounded-xl border border-amber-500/20 bg-amber-500/5 p-4 text-xs text-zinc-400">
+          <span className="text-amber-400" aria-hidden>&#9889;</span>
+          <p>
+            Configure Kalshi API credentials to enable live trading.
+          </p>
         </div>
       </div>
     </div>
@@ -510,37 +532,49 @@ function OrderbookDisplay({
 }) {
   const hasLevels = (orderbook?.yes?.length ?? 0) > 0 || (orderbook?.no?.length ?? 0) > 0;
   const displayOb = hasLevels ? orderbook! : getDemoOrderbook(market);
-  const yesDisplay = (displayOb.yes ?? []).slice().reverse().slice(0, 8);
-  const noDisplay = (displayOb.no ?? []).slice().reverse().slice(0, 8);
+  const yesDisplay = (displayOb.yes ?? []).slice().reverse().slice(0, 10);
+  const noDisplay = (displayOb.no ?? []).slice().reverse().slice(0, 10);
   return (
-    <div className="relative rounded-xl border border-white/10 bg-[#141418] p-5">
+    <div className="rounded-2xl border border-white/10 bg-[#0f0f12] p-6 shadow-lg">
       <div className="mb-4 flex items-center justify-between">
         <h3 className="text-sm font-semibold text-white">Order Book</h3>
         {isDemo && (
-          <span className="rounded bg-white/10 px-2 py-0.5 text-[10px] text-zinc-500">Demo</span>
+          <span className="rounded-lg bg-white/10 px-2.5 py-1 text-[10px] font-medium uppercase tracking-wider text-zinc-500">Demo</span>
         )}
       </div>
       <div className="grid grid-cols-2 gap-6 text-xs">
         <div>
-          <div className="mb-2 flex justify-between text-zinc-500">
-            <span>Price</span><span>Qty</span>
+          <div className="mb-2 flex justify-between px-2 text-[10px] font-semibold uppercase tracking-wider text-zinc-500">
+            <span>Yes bids</span>
+            <span>Qty</span>
           </div>
-          <div className="space-y-1">
+          <div className="space-y-0.5">
             {yesDisplay.map(([price, qty], i) => (
-              <div key={i} className="flex justify-between rounded px-2 py-1 text-emerald-400" style={{ background: `rgba(16,185,129,${Math.min(qty / 200, 0.15)})` }}>
-                <span>{formatCents(price)}</span><span>{qty}</span>
+              <div
+                key={i}
+                className="flex justify-between rounded-lg px-3 py-2 text-emerald-400"
+                style={{ background: `rgba(16,185,129,${Math.min(qty / 200, 0.12)})` }}
+              >
+                <span className="font-medium">{formatCents(price)}</span>
+                <span className="text-zinc-400">{formatCompact(qty)}</span>
               </div>
             ))}
           </div>
         </div>
         <div>
-          <div className="mb-2 flex justify-between text-zinc-500">
-            <span>Qty</span><span>Price</span>
+          <div className="mb-2 flex justify-between px-2 text-[10px] font-semibold uppercase tracking-wider text-zinc-500">
+            <span>Qty</span>
+            <span>No bids</span>
           </div>
-          <div className="space-y-1">
+          <div className="space-y-0.5">
             {noDisplay.map(([price, qty], i) => (
-              <div key={i} className="flex justify-between rounded px-2 py-1 text-red-400" style={{ background: `rgba(239,68,68,${Math.min(qty / 200, 0.15)})` }}>
-                <span>{qty}</span><span>{formatCents(price)}</span>
+              <div
+                key={i}
+                className="flex justify-between rounded-lg px-3 py-2 text-red-400"
+                style={{ background: `rgba(239,68,68,${Math.min(qty / 200, 0.12)})` }}
+              >
+                <span className="text-zinc-400">{formatCompact(qty)}</span>
+                <span className="font-medium">{formatCents(price)}</span>
               </div>
             ))}
           </div>
@@ -720,142 +754,151 @@ export default function MarketPage() {
     .slice(0, 4);
 
   return (
-    <div className="flex flex-col p-4 md:p-6">
-      {/* ── Breadcrumb ── */}
-      <nav className="mb-5 flex items-center gap-2 text-sm text-zinc-500">
-        <Link href="/app/markets" className="hover:text-white">
-          Markets
-        </Link>
-        {category && (
-          <>
-            <span>&gt;</span>
-            <span className="text-zinc-400">{category}</span>
-          </>
-        )}
-        {subTitle && (
-          <>
-            <span>&gt;</span>
-            <span className="text-zinc-400">{subTitle}</span>
-          </>
-        )}
-      </nav>
+    <div className="min-h-screen bg-[#0a0a0c]">
+      <div className="mx-auto max-w-[1600px] px-4 py-6 sm:px-6 lg:px-8">
+        {/* Breadcrumb */}
+        <nav className="mb-6 flex items-center gap-2 text-sm text-zinc-500">
+          <Link href="/app/markets" className="transition-colors hover:text-white">
+            Markets
+          </Link>
+          {category && (
+            <>
+              <span className="text-zinc-600">/</span>
+              <span className="text-zinc-400">{category}</span>
+            </>
+          )}
+          {subTitle && (
+            <>
+              <span className="text-zinc-600">/</span>
+              <span className="text-zinc-400 truncate max-w-[180px] sm:max-w-none">{subTitle}</span>
+            </>
+          )}
+        </nav>
 
-      <div className="grid gap-6 lg:grid-cols-[1fr_360px]">
-        {/* ════════════ LEFT COLUMN ════════════ */}
-        <div className="flex flex-col gap-6">
-          {/* ── Header ── */}
-          <div>
-            <h1 className="mb-3 text-2xl font-bold leading-tight text-white md:text-3xl">
-              {eventTitle}
-            </h1>
-            <div className="flex flex-wrap items-center gap-3 text-sm text-zinc-400">
-              <span className="font-medium text-white">${formatCompact(totalVol)} Vol.</span>
-              {siblingMarkets.length > 1 && (
-                <span>{siblingMarkets.length} outcomes</span>
-              )}
-              {expTime && <span>{formatDate(expTime)}</span>}
-              {/* Top outcome pills */}
-              {topOutcomes.map((m) => (
-                <span
-                  key={m.ticker}
-                  className="rounded-full border border-white/10 bg-white/5 px-2.5 py-0.5 text-xs"
-                >
-                  {getMarketOptionLabel(m)} {getLastPrice(m)}%
-                </span>
+        <div className="grid gap-8 lg:grid-cols-[1fr_380px]">
+          {/* Left column */}
+          <div className="flex flex-col gap-8">
+            {/* Header card: title + meta + outcome pills */}
+            <div className="rounded-2xl border border-white/10 bg-[#0f0f12] p-6 shadow-lg">
+              <div className="flex gap-4">
+                {market.image_url && (
+                  <div className="h-14 w-14 shrink-0 overflow-hidden rounded-xl bg-white/10">
+                    <img
+                      src={market.image_url}
+                      alt=""
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                )}
+                <div className="min-w-0 flex-1">
+                  <h1 className="text-xl font-bold leading-tight text-white sm:text-2xl md:text-3xl">
+                    {eventTitle}
+                  </h1>
+                  <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-zinc-400">
+                    <span className="font-medium text-white">${formatCompact(totalVol)} Vol.</span>
+                    {siblingMarkets.length > 1 && (
+                      <span>{siblingMarkets.length} outcomes</span>
+                    )}
+                    {expTime && <span>{formatDate(expTime)}</span>}
+                  </div>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {topOutcomes.map((m) => (
+                      <span
+                        key={m.ticker}
+                        className="rounded-lg border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-medium text-zinc-300"
+                      >
+                        {getMarketOptionLabel(m)} {getLastPrice(m)}%
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {dataApiAvailable === false && (
+              <div className="rounded-xl border border-amber-500/25 bg-amber-500/10 px-5 py-4 text-sm text-amber-200">
+                {isPolymarket ? (
+                  <>Order book & trade history are not available for Polymarket here. Chart shows estimated price.</>
+                ) : (
+                  <>Chart & order book unavailable. Start the Kalshi backend: <code className="rounded bg-black/30 px-1.5 py-0.5 text-xs">cd backend/kalshi && npm run dev</code></>
+                )}
+              </div>
+            )}
+
+            {/* Price chart card */}
+            <div className="rounded-2xl border border-white/10 bg-[#0f0f12] p-6 shadow-lg">
+              <div className="mb-2 flex flex-wrap items-end justify-between gap-4">
+                <div>
+                  <span className="text-3xl font-bold text-white">{lastPrice}%</span>
+                  <span className="ml-2 text-sm text-zinc-500">chance</span>
+                </div>
+                <div className="flex gap-1 rounded-lg bg-white/[0.04] p-1">
+                  {["1D", "1W", "1M", "3M", "ALL"].map((t) => (
+                    <button
+                      key={t}
+                      type="button"
+                      onClick={() => setTimeRange(t)}
+                      className={`rounded-md px-3 py-2 text-xs font-medium transition-colors ${
+                        timeRange === t
+                          ? "bg-white/10 text-white"
+                          : "text-zinc-500 hover:text-white"
+                      }`}
+                    >
+                      {t}
+                    </button>
+                  ))}
+                </div>
+              </div>
+              <div className="my-4 h-[220px]">
+                <PriceChart
+                  trades={trades.length > 0 ? trades : getDemoChartData(market)}
+                  isDemo={trades.length === 0}
+                />
+              </div>
+            </div>
+
+            {/* Outcomes table */}
+            {siblingMarkets.length > 0 && (
+              <div className="rounded-2xl border border-white/10 bg-[#0f0f12] p-6 shadow-lg">
+                <h3 className="mb-4 text-sm font-semibold text-white">Outcomes</h3>
+                <OutcomesTable markets={siblingMarkets} currentTicker={ticker} />
+              </div>
+            )}
+
+            {/* Market rules */}
+            <MarketRules market={market} />
+
+            {/* Order book */}
+            <OrderbookDisplay
+              orderbook={orderbook}
+              market={market}
+              isDemo={!(orderbook?.yes?.length || orderbook?.no?.length)}
+            />
+
+            {/* Stats grid */}
+            <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+              {[
+                { label: "Volume", value: `$${formatCompact(vol)}` },
+                { label: "Open Interest", value: formatCompact(oi) },
+                { label: "Status", value: (market.status as string) ?? "active" },
+                { label: "Expires", value: expTime ? formatDate(expTime) : "\u2014" },
+              ].map((s) => (
+                <div key={s.label} className="rounded-xl border border-white/10 bg-[#0f0f12] p-4">
+                  <p className="text-xs font-medium text-zinc-500">{s.label}</p>
+                  <p className="mt-1 text-sm font-semibold text-white capitalize">{s.value}</p>
+                </div>
               ))}
             </div>
           </div>
 
-          {dataApiAvailable === false && (
-            <div className="rounded-xl border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-200">
-              {isPolymarket ? (
-                <>
-                  <strong>Order book & trade history</strong> are not available for Polymarket here. Chart shows estimated price.
-                </>
-              ) : (
-                <>
-                  <strong>Chart & order book unavailable.</strong> Start the Kalshi backend:{" "}
-                  <code className="rounded bg-black/30 px-1 py-0.5 text-xs">cd backend/kalshi && npm run dev</code>
-                </>
-              )}
-            </div>
-          )}
-
-          {/* ── Price Chart ── */}
-          <div className="rounded-xl border border-white/10 bg-[#141418] p-5">
-            <div className="mb-1 flex items-end justify-between">
-              <div>
-                <span className="text-3xl font-bold text-white">{lastPrice}%</span>
-                <span className="ml-2 text-sm text-zinc-500">chance</span>
-              </div>
-            </div>
-
-            <div className="my-4 h-[200px]">
-              <PriceChart
-                trades={trades.length > 0 ? trades : getDemoChartData(market)}
-                isDemo={trades.length === 0}
-              />
-            </div>
-
-            {/* Time range buttons */}
-            <div className="flex gap-1 border-t border-white/10 pt-3">
-              {["1D", "1W", "1M", "3M", "ALL"].map((t) => (
-                <button
-                  key={t}
-                  type="button"
-                  onClick={() => setTimeRange(t)}
-                  className={`rounded-md px-3 py-1.5 text-xs font-medium transition-colors ${
-                    timeRange === t
-                      ? "bg-white/10 text-white"
-                      : "text-zinc-500 hover:text-white"
-                  }`}
-                >
-                  {t}
-                </button>
-              ))}
-            </div>
+          {/* Right sidebar: Quick Trade */}
+          <div className="order-first lg:order-last">
+            <TradingSidebar
+              market={market}
+              eventTitle={eventTitle}
+              siblingMarkets={siblingMarkets.length > 0 ? siblingMarkets : [market]}
+            />
           </div>
-
-          {/* ── Outcomes Table ── */}
-          {siblingMarkets.length > 0 && (
-            <div className="rounded-xl border border-white/10 bg-[#141418] p-5">
-              <OutcomesTable markets={siblingMarkets} currentTicker={ticker} />
-            </div>
-          )}
-
-          {/* ── Market Rules ── */}
-          <MarketRules market={market} />
-
-          {/* ── Order Book ── */}
-          <OrderbookDisplay
-            orderbook={orderbook}
-            market={market}
-            isDemo={!(orderbook?.yes?.length || orderbook?.no?.length)}
-          />
-
-          {/* ── Stats ── */}
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-            {[
-              { label: "Volume", value: `$${formatCompact(vol)}` },
-              { label: "Open Interest", value: formatCompact(oi) },
-              { label: "Status", value: (market.status as string) ?? "active" },
-              { label: "Expires", value: expTime ? formatDate(expTime) : "\u2014" },
-            ].map((s) => (
-              <div key={s.label} className="rounded-xl border border-white/10 bg-[#141418] p-4">
-                <p className="text-xs text-zinc-500">{s.label}</p>
-                <p className="mt-1 text-sm font-semibold text-white capitalize">{s.value}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* ════════════ RIGHT SIDEBAR ════════════ */}
-        <div className="order-first lg:order-last">
-          <TradingSidebar
-            market={market}
-            eventTitle={eventTitle}
-            siblingMarkets={siblingMarkets.length > 0 ? siblingMarkets : [market]}
-          />
         </div>
       </div>
     </div>

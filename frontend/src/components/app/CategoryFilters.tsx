@@ -2,7 +2,6 @@
 
 const CATEGORIES = [
   "Trending",
-  "Breaking",
   "New",
   "Politics",
   "Sports",
