@@ -4,7 +4,7 @@ export function Testimonial() {
       <div className="mx-auto max-w-3xl px-6 text-center">
         <span className="mb-6 block text-6xl text-purple-500/40">"</span>
         <blockquote className="text-xl font-medium leading-relaxed text-white sm:text-2xl">
-          Convergence lets me run auto trading bots, do quant analysis, get
+          ORKA lets me run auto trading bots, do quant analysis, get
           unique insights behind whale trades, and find arbitrage across
           platforms — all from one place.
         </blockquote>

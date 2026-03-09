@@ -14,7 +14,7 @@ export function CTA() {
           href="/app"
           className="inline-flex items-center gap-2 rounded-lg border border-purple-500/70 bg-purple-500/10 px-8 py-4 text-base font-medium text-white shadow-[0_0_24px_rgba(168,85,247,0.4)] transition-all hover:border-purple-400 hover:shadow-[0_0_32px_rgba(168,85,247,0.5)]"
         >
-          Open Convergence →
+          Open ORKA →
         </Link>
         <p className="mt-6 text-sm text-zinc-500">
           Free to start · No credit card · API keys stay encrypted on your

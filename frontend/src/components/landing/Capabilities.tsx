@@ -1,38 +1,38 @@
 const features = [
   {
-    title: "Autonomous Trading Bots",
+    title: "MCP Server Discovery",
     description:
-      "Deploy bots that monitor markets 24/7, execute strategies, and report PnL in real-time. Paper or live mode.",
+      "Browse and connect MCP servers built for prediction markets. One protocol, every tool—from market data and order execution to custom analytics and agents.",
     icon: "⬆",
   },
   {
-    title: "Quant Analysis Engine",
+    title: "Agent-Ready Market Data",
     description:
-      "Run pandas, numpy, and custom scripts directly. Chart generation, statistical modeling, and backtesting built-in.",
+      "Structured feeds and APIs your AI agents can consume via MCP. Real-time odds, orderbooks, and events across Polymarket, Kalshi, and more.",
     icon: "▤",
   },
   {
     title: "One-Click Execution",
     description:
-      "Trade across leading prediction platforms from a single order panel. Market and limit orders with risk management.",
+      "Trade from any MCP-enabled client. Market and limit orders, risk controls, and unified execution across prediction platforms from a single panel.",
     icon: "⚡",
   },
   {
     title: "Multi-Platform Scanner",
     description:
-      "Real-time market scanner with filtering, sorting, and whale activity tracking across all supported prediction platforms.",
+      "Scan and filter markets across all connected platforms. Track whale activity, momentum, and opportunities through one MCP-powered scanner.",
     icon: "☰",
   },
   {
     title: "AI Agent",
     description:
-      "Natural language interface to your trading stack. Ask the AI to analyze markets, write strategies, and deploy bots for you.",
+      "Natural language interface to the MCP marketplace. Ask the AI to analyze markets, call MCP tools, place trades, and deploy strategies for you.",
     icon: "›",
   },
   {
     title: "Enterprise-Grade Security",
     description:
-      "AES-256 encrypted credentials, isolated sandboxed execution, and zero-knowledge key management. Your keys stay yours.",
+      "Secure MCP connections with encrypted credentials and isolated execution. Zero-knowledge key management so your keys never leave your control.",
     icon: "🛡",
   },
 ];
@@ -45,11 +45,11 @@ export function Capabilities() {
           Capabilities
         </p>
         <h2 className="mb-4 text-3xl font-bold text-white sm:text-4xl">
-          Everything you need to win
+          The MCP marketplace for prediction markets
         </h2>
         <p className="mb-16 max-w-2xl text-zinc-400">
-          A unified AI terminal that combines market intelligence, autonomous
-          execution and multi-platform trading.
+          Discover MCP servers, connect AI agents to live markets, and trade
+          across Polymarket, Kalshi, and more—all through one protocol.
         </p>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {features.map((feature) => (

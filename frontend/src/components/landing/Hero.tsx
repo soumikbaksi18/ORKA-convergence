@@ -18,7 +18,7 @@ export function Hero() {
       <div className="relative mx-auto max-w-4xl px-6 text-center">
         <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-emerald-500/40 bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-400">
           <span className="h-2 w-2 rounded-full bg-emerald-400" />
-          Now live — v2.0 with multi-platform trading
+          Now live on Polymarket, Kalshi and other markets coming soon…
         </p>
         <h1 className="mb-6 text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl md:text-6xl">
           The AI terminal for{" "}
@@ -35,7 +35,7 @@ export function Hero() {
             href="/app"
             className="inline-flex items-center gap-2 rounded-lg border border-purple-500/70 bg-purple-500/10 px-6 py-3 text-base font-medium text-white shadow-[0_0_24px_rgba(168,85,247,0.4)] transition-all hover:border-purple-400 hover:shadow-[0_0_32px_rgba(168,85,247,0.5)]"
           >
-            Open Convergence →
+            Open ORKA →
           </Link>
           <Link
             href="#how-it-works"
@@ -43,11 +43,6 @@ export function Hero() {
           >
             ► See how it works
           </Link>
-        </div>
-        <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-zinc-500">
-          <span className="flex items-center gap-2">End-to-end encrypted</span>
-          <span className="flex items-center gap-2">No credit card required</span>
-          <span className="flex items-center gap-2">Free tier available</span>
         </div>
       </div>
     </section>

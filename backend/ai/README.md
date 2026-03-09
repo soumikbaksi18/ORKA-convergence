@@ -1,4 +1,4 @@
-# Convergence AI Analysis API
+# ORKA AI Analysis API
 
 FastAPI backend for AI-powered market analysis: model selection (OpenAI, Claude, DeepSeek), chat with market context, risk tolerance, and investment amount.
 

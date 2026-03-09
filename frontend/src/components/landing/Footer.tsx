@@ -5,7 +5,7 @@ export function Footer() {
     <footer className="border-t border-white/5 py-12">
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-6 sm:flex-row">
         <Link href="/" className="text-lg font-semibold text-white">
-          Convergence
+          ORKA
         </Link>
         <nav className="flex items-center gap-8">
           <Link
@@ -28,7 +28,7 @@ export function Footer() {
           </Link>
         </nav>
         <p className="text-sm text-zinc-500">
-          © {new Date().getFullYear()} Convergence. All rights reserved.
+          © {new Date().getFullYear()} ORKA. All rights reserved.
         </p>
       </div>
     </footer>

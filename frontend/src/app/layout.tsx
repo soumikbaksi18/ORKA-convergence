@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Convergence — AI Terminal for Prediction Markets",
+  title: "ORKA — AI Terminal for Prediction Markets",
   description:
     "Deploy autonomous trading bots, run quant analysis, and trade across leading prediction market platforms from one AI-powered interface.",
 };

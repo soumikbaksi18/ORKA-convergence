@@ -4,8 +4,14 @@ export function AppHeader() {
   return (
     <header className="flex h-14 items-center justify-between border-b border-white/10 bg-black px-4">
       <div className="flex items-center gap-6">
-        <Link href="/" className="text-lg font-semibold text-white">
-          Convergence
+        <Link href="/" className="flex items-center">
+          <img
+            src="/orka-logo.png"
+            alt="ORKA"
+            className="h-10 w-auto object-contain [mix-blend-mode:lighten]"
+            width={130}
+            height={40}
+          />
         </Link>
         <nav className="hidden items-center gap-1 md:flex">
           <Link

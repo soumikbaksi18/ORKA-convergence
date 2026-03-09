@@ -4,10 +4,14 @@ export function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-black/80 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
-        <Link href="/" className="flex items-center gap-2">
-          <span className="text-xl font-semibold tracking-tight text-white">
-            Convergence
-          </span>
+        <Link href="/" className="flex items-center">
+          <img
+            src="/orka-logo.png"
+            alt="ORKA"
+            className="h-11 w-auto object-contain [mix-blend-mode:lighten]"
+            width={160}
+            height={48}
+          />
         </Link>
         <nav className="hidden items-center gap-8 md:flex">
           <Link
