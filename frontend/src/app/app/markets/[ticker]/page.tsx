@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { useParams } from "next/navigation";
+import { useParams, useSearchParams } from "next/navigation";
 import {
   fetchMarket,
   fetchEvent,
@@ -20,6 +20,11 @@ import {
   getMarketOptionLabel,
   getExpiration,
 } from "@/lib/api/kalshi";
+import {
+  fetchPolymarketEvent,
+  polymarketMarketToMarket,
+  type PolymarketMarketRaw,
+} from "@/lib/api/polymarket";
 import type { Market, KalshiEvent } from "@/types/markets";
 
 /* ────────────────────────────── helpers ────────────────────────────── */
@@ -207,7 +212,11 @@ function OutcomesTable({
               >
                 <td className="py-3 pr-4">
                   <Link
-                    href={`/app/markets/${encodeURIComponent(m.ticker)}`}
+                    href={
+                      m.ticker.startsWith("poly-") && m.event_ticker
+                        ? `/app/markets/${encodeURIComponent(m.ticker)}?event=${encodeURIComponent((m.event_ticker || "").replace(/^poly-/, ""))}`
+                        : `/app/markets/${encodeURIComponent(m.ticker)}`
+                    }
                     className="flex items-center gap-3"
                   >
                     <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/10 text-xs font-bold text-zinc-300">
@@ -228,7 +237,11 @@ function OutcomesTable({
                 </td>
                 <td className="py-3 text-center">
                   <Link
-                    href={`/app/markets/${encodeURIComponent(m.ticker)}`}
+                    href={
+                      m.ticker.startsWith("poly-") && m.event_ticker
+                        ? `/app/markets/${encodeURIComponent(m.ticker)}?event=${encodeURIComponent((m.event_ticker || "").replace(/^poly-/, ""))}`
+                        : `/app/markets/${encodeURIComponent(m.ticker)}`
+                    }
                     className="inline-flex items-center gap-1 rounded-md border border-emerald-500/30 bg-emerald-500/10 px-3 py-1.5 text-xs font-medium text-emerald-400 transition-colors hover:bg-emerald-500/20"
                   >
                     Yes {yesAsk > 0 ? formatCents(yesAsk) : ""}
@@ -236,7 +249,11 @@ function OutcomesTable({
                 </td>
                 <td className="py-3 text-center">
                   <Link
-                    href={`/app/markets/${encodeURIComponent(m.ticker)}`}
+                    href={
+                      m.ticker.startsWith("poly-") && m.event_ticker
+                        ? `/app/markets/${encodeURIComponent(m.ticker)}?event=${encodeURIComponent((m.event_ticker || "").replace(/^poly-/, ""))}`
+                        : `/app/markets/${encodeURIComponent(m.ticker)}`
+                    }
                     className="inline-flex items-center gap-1 rounded-md border border-red-500/30 bg-red-500/10 px-3 py-1.5 text-xs font-medium text-red-400 transition-colors hover:bg-red-500/20"
                   >
                     No {noAsk > 0 ? formatCents(noAsk) : ""}
@@ -509,7 +526,11 @@ function OrderbookDisplay({
 
 export default function MarketPage() {
   const params = useParams();
+  const searchParams = useSearchParams();
   const ticker = params?.ticker as string;
+  const eventIdParam = searchParams?.get("event");
+  const isPolymarket = ticker?.startsWith("poly-");
+  const marketIdFromTicker = isPolymarket ? (ticker || "").replace(/^poly-/, "") : "";
 
   const [market, setMarket] = useState<Market | null>(null);
   const [siblingMarkets, setSiblingMarkets] = useState<Market[]>([]);
@@ -521,29 +542,60 @@ export default function MarketPage() {
   const [error, setError] = useState<string | null>(null);
   const [timeRange, setTimeRange] = useState("ALL");
 
-  // Fetch market + event
+  // Fetch market + event (Kalshi or Polymarket)
   useEffect(() => {
     if (!ticker) return;
     let cancelled = false;
     setLoading(true);
     setError(null);
+
     (async () => {
       try {
-        const res = await fetchMarket(ticker);
-        const m = res.data;
-        if (cancelled) return;
-        setMarket(m);
-        if (m?.event_ticker) {
-          try {
-            const eventRes = await fetchEvent(m.event_ticker);
-            if (cancelled) return;
-            setEventData(eventRes.data ?? null);
-            setSiblingMarkets(eventRes.markets ?? []);
-          } catch {
+        if (isPolymarket && eventIdParam) {
+          const ev = await fetchPolymarketEvent(eventIdParam);
+          if (cancelled) return;
+          const eventTicker = `poly-${ev.id}`;
+          const rawMarkets = ev.markets ?? [];
+          const found = rawMarkets.find((m: PolymarketMarketRaw) => String(m.id) === marketIdFromTicker);
+          if (!found) {
+            setError("Polymarket market not found in event.");
+            setMarket(null);
+            setSiblingMarkets([]);
+            setEventData(null);
+            return;
+          }
+          const normalizedMarket = polymarketMarketToMarket(found, eventTicker);
+          const siblings = rawMarkets
+            .filter((m: PolymarketMarketRaw) => m.id && (m.question || m.conditionId))
+            .map((m: PolymarketMarketRaw) => polymarketMarketToMarket(m, eventTicker));
+          setMarket(normalizedMarket);
+          setSiblingMarkets(siblings);
+          setEventData({
+            event_ticker: eventTicker,
+            title: ev.title ?? "",
+            sub_title: ev.subtitle ?? "",
+            category: (ev as { category?: string }).category ?? "",
+          } as KalshiEvent);
+        } else if (!isPolymarket) {
+          const res = await fetchMarket(ticker);
+          const m = res.data;
+          if (cancelled) return;
+          setMarket(m);
+          if (m?.event_ticker) {
+            try {
+              const eventRes = await fetchEvent(m.event_ticker);
+              if (cancelled) return;
+              setEventData(eventRes.data ?? null);
+              setSiblingMarkets(eventRes.markets ?? []);
+            } catch {
+              setSiblingMarkets([]);
+            }
+          } else {
             setSiblingMarkets([]);
           }
         } else {
-          setSiblingMarkets([]);
+          setError("Polymarket market requires ?event= in the URL. Open from the Markets list.");
+          setMarket(null);
         }
       } catch (e) {
         if (!cancelled) setError(e instanceof Error ? e.message : "Failed to load market");
@@ -552,11 +604,14 @@ export default function MarketPage() {
       }
     })();
     return () => { cancelled = true; };
-  }, [ticker]);
+  }, [ticker, isPolymarket, eventIdParam, marketIdFromTicker]);
 
-  // Fetch orderbook + trades
+  // Fetch orderbook + trades (Kalshi only; Polymarket uses demo chart)
   useEffect(() => {
-    if (!ticker) return;
+    if (!ticker || isPolymarket) {
+      if (isPolymarket) setDataApiAvailable(false);
+      return;
+    }
     let cancelled = false;
     setDataApiAvailable(null);
     (async () => {
@@ -590,7 +645,7 @@ export default function MarketPage() {
       }
     })();
     return () => { cancelled = true; };
-  }, [ticker]);
+  }, [ticker, isPolymarket]);
 
   /* ── Loading / Error states ── */
   if (loading) {
@@ -685,8 +740,16 @@ export default function MarketPage() {
 
           {dataApiAvailable === false && (
             <div className="rounded-xl border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-200">
-              <strong>Chart & order book unavailable.</strong> Start the Kalshi backend:{" "}
-              <code className="rounded bg-black/30 px-1 py-0.5 text-xs">cd backend/kalshi && npm run dev</code>
+              {isPolymarket ? (
+                <>
+                  <strong>Order book & trade history</strong> are not available for Polymarket here. Chart shows estimated price.
+                </>
+              ) : (
+                <>
+                  <strong>Chart & order book unavailable.</strong> Start the Kalshi backend:{" "}
+                  <code className="rounded bg-black/30 px-1 py-0.5 text-xs">cd backend/kalshi && npm run dev</code>
+                </>
+              )}
             </div>
           )}
 

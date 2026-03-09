@@ -2,16 +2,23 @@
 
 import { useEffect, useState } from "react";
 import { checkKalshiHealth } from "@/lib/api/kalshi";
+import { checkPolymarketHealth } from "@/lib/api/polymarket";
 
 export function AppStatusBar() {
   const [kalshiLatency, setKalshiLatency] = useState<number | null>(null);
   const [kalshiOnline, setKalshiOnline] = useState<boolean | null>(null);
+  const [polyLatency, setPolyLatency] = useState<number | null>(null);
+  const [polyOnline, setPolyOnline] = useState<boolean | null>(null);
 
   useEffect(() => {
     const poll = () => {
       checkKalshiHealth().then(({ ok, latencyMs }) => {
         setKalshiOnline(ok);
         setKalshiLatency(latencyMs ?? null);
+      });
+      checkPolymarketHealth().then(({ ok, latencyMs }) => {
+        setPolyOnline(ok);
+        setPolyLatency(latencyMs ?? null);
       });
     };
     poll();
@@ -35,7 +42,10 @@ export function AppStatusBar() {
         >
           Kalshi {kalshiLatency != null ? `${kalshiLatency}ms` : "—"}
         </span>
-        <span className="text-zinc-500">Polymarket —</span>
+        <span className={`flex items-center gap-1.5 ${polyOnline ? "text-emerald-500" : polyOnline === false ? "text-red-400" : "text-zinc-500"}`}>
+          <span className={`h-1.5 w-1.5 rounded-full ${polyOnline ? "bg-emerald-500" : polyOnline === false ? "bg-red-400" : "bg-zinc-500"}`} />
+          Polymarket {polyLatency != null ? `${polyLatency}ms` : "—"}
+        </span>
         <span className="text-zinc-500">Opinion —</span>
       </div>
       <div className="hidden sm:block">MCP: 12/12 Tools</div>

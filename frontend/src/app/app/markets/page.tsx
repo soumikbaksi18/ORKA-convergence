@@ -6,6 +6,10 @@ import { MarketSourceTabs } from "@/components/app/MarketSourceTabs";
 import { CategoryFilters } from "@/components/app/CategoryFilters";
 import { MarketsTable } from "@/components/app/MarketsTable";
 import { fetchMarkets } from "@/lib/api/kalshi";
+import {
+  fetchPolymarketEvents,
+  polymarketEventsToMarkets,
+} from "@/lib/api/polymarket";
 import type { Market } from "@/types/markets";
 
 type Source = "kalshi" | "polymarket" | "opinion" | "predict" | "probable";
@@ -19,16 +23,27 @@ export default function MarketsPage() {
   const [viewMode, setViewMode] = useState<"list" | "grid">("list");
 
   const loadMarkets = useCallback(async () => {
-    if (source !== "kalshi") {
-      setMarkets([]);
-      setLoading(false);
-      return;
-    }
     setLoading(true);
     setError(null);
     try {
-      const res = await fetchMarkets({ status: "open", limit: 50, mve_filter: "exclude" });
-      setMarkets(res.data ?? []);
+      if (source === "kalshi") {
+        const res = await fetchMarkets({
+          status: "open",
+          limit: 50,
+          mve_filter: "exclude",
+        });
+        setMarkets(res.data ?? []);
+      } else if (source === "polymarket") {
+        const events = await fetchPolymarketEvents({
+          limit: 50,
+          offset: 0,
+          active: true,
+        });
+        const normalized = polymarketEventsToMarkets(events);
+        setMarkets(normalized);
+      } else {
+        setMarkets([]);
+      }
     } catch (e) {
       setError(e instanceof Error ? e.message : "Failed to load markets");
       setMarkets([]);
@@ -139,7 +154,11 @@ export default function MarketsPage() {
       {/* Error message */}
       {error && (
         <div className="mb-4 rounded border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-400">
-          {error}. Ensure the Kalshi integration server is running on port 4000.
+          {error}
+          {source === "kalshi" &&
+            ". Ensure the Kalshi integration server is running on port 4000."}
+          {source === "polymarket" &&
+            " Ensure the proxy allows gamma-api.polymarket.com or try again."}
         </div>
       )}
 

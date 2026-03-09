@@ -106,7 +106,11 @@ export function MarketsTable({ markets, isLoading }: MarketsTableProps) {
               >
                 <td className="px-4 py-3">
                   <Link
-                    href={`/app/markets/${encodeURIComponent(m.ticker)}`}
+                    href={
+                      m.ticker.startsWith("poly-") && m.event_ticker
+                        ? `/app/markets/${encodeURIComponent(m.ticker)}?event=${encodeURIComponent((m.event_ticker || "").replace(/^poly-/, ""))}`
+                        : `/app/markets/${encodeURIComponent(m.ticker)}`
+                    }
                     className="flex items-start gap-3"
                   >
                     <div className="mt-0.5 h-9 w-9 shrink-0 rounded bg-white/10" />

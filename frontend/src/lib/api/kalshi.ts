@@ -5,7 +5,7 @@ import type {
   EventApiResponse,
 } from "@/types/markets";
 
-/** Use same-origin API routes so markets load reliably (no CORS). */
+/** Kalshi integration: all functions call Next.js /api/* routes that proxy to the Kalshi backend (localhost:4000), which uses the real Kalshi API. */
 const API_BASE =
   typeof window === "undefined"
     ? process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"

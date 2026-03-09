@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
+/** Integration: Kalshi — proxies to Kalshi integration server (which calls Kalshi API). */
 const KALSHI_API_URL =
   process.env.KALSHI_API_URL || "http://localhost:4000";
 
