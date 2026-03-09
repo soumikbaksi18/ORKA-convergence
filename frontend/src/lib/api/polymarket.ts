@@ -67,6 +67,21 @@ function toNum(v: number | string | undefined | null): number {
   return Number.isFinite(n) ? n : 0;
 }
 
+/** Parse clobTokenIds (Gamma: "[\"id1\", \"id2\"]" or array) -> first = Yes token. */
+function parseClobTokenIds(
+  clobTokenIds: string | string[] | undefined
+): string[] {
+  if (clobTokenIds == null) return [];
+  if (Array.isArray(clobTokenIds)) return clobTokenIds.filter((x) => typeof x === "string");
+  if (typeof clobTokenIds !== "string") return [];
+  try {
+    const parsed = JSON.parse(clobTokenIds) as unknown;
+    return Array.isArray(parsed) ? parsed.filter((x): x is string => typeof x === "string") : [];
+  } catch {
+    return [];
+  }
+}
+
 /** Normalize a Polymarket market to the shared Market shape for the table. */
 export function polymarketMarketToMarket(
   pm: PolymarketMarketRaw,
@@ -127,6 +142,9 @@ export function polymarketMarketToMarket(
     ),
     open_interest: toNum(pm.liquidityNum),
     image_url: imageUrl || undefined,
+    polymarket_yes_token_id: parseClobTokenIds(
+      (pm as Record<string, unknown>).clobTokenIds as string | string[] | undefined
+    )[0],
   };
 }
 
@@ -185,6 +203,45 @@ export async function fetchPolymarketEvents(
   return data as PolymarketEventRaw[];
 }
 
+/** CLOB price history point: t = unix ms, p = price 0–1. */
+export interface PolymarketPriceHistoryPoint {
+  t: number;
+  p: number;
+}
+
+export interface FetchPolymarketPricesHistoryParams {
+  interval?: "max" | "all" | "1m" | "1w" | "1d" | "6h" | "1h";
+  startTs?: number;
+  endTs?: number;
+  fidelity?: number;
+}
+
+/** Fetch price history for one Polymarket token (for charts). */
+export async function fetchPolymarketPricesHistory(
+  tokenId: string,
+  params: FetchPolymarketPricesHistoryParams = {}
+): Promise<PolymarketPriceHistoryPoint[]> {
+  const searchParams = new URLSearchParams();
+  searchParams.set("market", tokenId);
+  searchParams.set("interval", params.interval ?? "1d");
+  if (params.startTs != null) searchParams.set("startTs", String(params.startTs));
+  if (params.endTs != null) searchParams.set("endTs", String(params.endTs));
+  if (params.fidelity != null) searchParams.set("fidelity", String(params.fidelity));
+
+  const url = `${API_BASE}/api/polymarket/prices-history?${searchParams.toString()}`;
+  const res = await fetch(url);
+
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    throw new Error(err.error || `Polymarket price history error: ${res.status}`);
+  }
+
+  const data = (await res.json()) as { history?: PolymarketPriceHistoryPoint[] };
+  const history = data?.history;
+  if (!Array.isArray(history)) return [];
+  return history;
+}
+
 export async function checkPolymarketHealth(): Promise<{
   ok: boolean;
   latencyMs?: number;
@@ -222,4 +279,37 @@ export async function fetchPolymarketEvent(
     throw new Error("Invalid Polymarket event response");
   }
   return data as PolymarketEventRaw;
+}
+
+/** Order book level: [price_cents, size][]. Matches Kalshi OrderbookLevel. */
+export interface PolymarketOrderbookLevel {
+  yes: [number, number][];
+  no: [number, number][];
+}
+
+/** Fetch order book from Polymarket CLOB for YES and optionally NO token. */
+export async function fetchPolymarketOrderbook(
+  yesTokenId: string,
+  noTokenId?: string | null
+): Promise<PolymarketOrderbookLevel> {
+  const searchParams = new URLSearchParams();
+  searchParams.set("yesTokenId", yesTokenId);
+  if (noTokenId) searchParams.set("noTokenId", noTokenId);
+
+  const url = `${API_BASE}/api/polymarket/orderbook?${searchParams.toString()}`;
+  const res = await fetch(url);
+
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    throw new Error(err.error || `Polymarket orderbook error: ${res.status}`);
+  }
+
+  const data = await res.json();
+  if (!data?.success || !data?.data) {
+    return { yes: [], no: [] };
+  }
+  return {
+    yes: Array.isArray(data.data.yes) ? data.data.yes : [],
+    no: Array.isArray(data.data.no) ? data.data.no : [],
+  };
 }

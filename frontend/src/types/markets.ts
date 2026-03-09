@@ -49,6 +49,8 @@ export interface Market {
   custom_strike?: Record<string, string>;
   /** Image URL for the market (from Kalshi event metadata or Polymarket API). */
   image_url?: string;
+  /** Polymarket CLOB token ID for Yes outcome (for price history API). */
+  polymarket_yes_token_id?: string;
   [key: string]: unknown;
 }
 
