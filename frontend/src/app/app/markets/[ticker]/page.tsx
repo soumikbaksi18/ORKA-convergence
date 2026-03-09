@@ -171,6 +171,36 @@ function PriceChart({
   );
 }
 
+/* ───────────────────────── Outcome thumbnail ────────────────────────── */
+
+function OutcomeThumbnail({
+  imageUrl,
+  label,
+}: {
+  imageUrl?: string | null;
+  label: string;
+}) {
+  const [failed, setFailed] = useState(false);
+  const showImage = imageUrl && !failed;
+
+  return (
+    <div className="flex h-8 w-8 shrink-0 overflow-hidden rounded-full bg-white/10">
+      {showImage ? (
+        <img
+          src={imageUrl}
+          alt=""
+          className="h-full w-full object-cover"
+          onError={() => setFailed(true)}
+        />
+      ) : (
+        <span className="flex h-full w-full items-center justify-center text-xs font-bold text-zinc-300">
+          {label.charAt(0).toUpperCase() || "?"}
+        </span>
+      )}
+    </div>
+  );
+}
+
 /* ───────────────────────── Outcomes Table ──────────────────────────── */
 
 function OutcomesTable({
@@ -219,9 +249,7 @@ function OutcomesTable({
                     }
                     className="flex items-center gap-3"
                   >
-                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/10 text-xs font-bold text-zinc-300">
-                      {label.charAt(0).toUpperCase()}
-                    </div>
+                    <OutcomeThumbnail imageUrl={m.image_url} label={label} />
                     <div>
                       <span className={`font-medium ${isCurrent ? "text-emerald-400" : "text-white"}`}>
                         {label}

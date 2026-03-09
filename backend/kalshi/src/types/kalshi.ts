@@ -301,3 +301,19 @@ export interface BatchOrderResult {
 export interface BatchCreateOrdersResponse {
   orders: BatchOrderResult[];
 }
+
+// Event metadata (images)
+export interface MarketMetadata {
+  market_ticker: string;
+  image_url: string;
+  color_code: string;
+}
+
+export interface GetEventMetadataResponse {
+  image_url: string;
+  featured_image_url?: string;
+  market_details: MarketMetadata[];
+  settlement_sources: unknown[];
+  competition?: string;
+  competition_scope?: string;
+}

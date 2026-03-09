@@ -22,6 +22,8 @@ export interface PolymarketMarketRaw {
   active?: boolean;
   closed?: boolean;
   slug?: string;
+  image?: string;
+  icon?: string;
   [key: string]: unknown;
 }
 
@@ -29,6 +31,8 @@ export interface PolymarketEventRaw {
   id: string;
   slug: string;
   title: string;
+  image?: string;
+  icon?: string;
   markets?: PolymarketMarketRaw[];
   [key: string]: unknown;
 }
@@ -49,7 +53,8 @@ function parseOutcomePrices(outcomePrices: string | undefined): [number, number]
 /** Normalize a Polymarket market to the shared Market shape for the table. */
 export function polymarketMarketToMarket(
   pm: PolymarketMarketRaw,
-  eventTicker?: string
+  eventTicker?: string,
+  eventImageUrl?: string
 ): Market {
   const [yesPrice, noPrice] = parseOutcomePrices(pm.outcomePrices);
   const lastPrice = pm.lastTradePrice != null
@@ -57,6 +62,8 @@ export function polymarketMarketToMarket(
     : yesPrice;
   const bestBid = (pm.bestBid ?? 0) * 100;
   const bestAsk = (pm.bestAsk ?? 1) * 100;
+
+  const imageUrl = pm.image || pm.icon || eventImageUrl || undefined;
 
   return {
     ticker: `poly-${pm.id}`,
@@ -73,6 +80,7 @@ export function polymarketMarketToMarket(
     volume: pm.volumeNum ?? 0,
     volume_24h: pm.volume24hr ?? 0,
     open_interest: pm.liquidityNum ?? 0,
+    image_url: imageUrl || undefined,
   };
 }
 
@@ -81,10 +89,11 @@ export function polymarketEventsToMarkets(events: PolymarketEventRaw[]): Market[
   const markets: Market[] = [];
   for (const ev of events) {
     const eventTicker = `poly-${ev.id}`;
+    const eventImageUrl = ev.image || ev.icon || undefined;
     const list = ev.markets ?? [];
     for (const m of list) {
       if (m.id && (m.question || m.conditionId)) {
-        markets.push(polymarketMarketToMarket(m, eventTicker));
+        markets.push(polymarketMarketToMarket(m, eventTicker, eventImageUrl));
       }
     }
   }

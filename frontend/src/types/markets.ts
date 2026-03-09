@@ -47,6 +47,8 @@ export interface Market {
   expected_expiration_time?: string;
   settlement_timer_seconds?: number;
   custom_strike?: Record<string, string>;
+  /** Image URL for the market (from Kalshi event metadata or Polymarket API). */
+  image_url?: string;
   [key: string]: unknown;
 }
 

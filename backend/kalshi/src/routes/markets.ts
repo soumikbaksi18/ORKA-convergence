@@ -4,13 +4,26 @@ import {
   getMarket,
   getOrderbook,
   getCandlesticks,
+  getEventMetadata,
 } from "../services/kalshiClient";
 import { MarketParams, CandlestickParams } from "../types/kalshi";
+import type { Market } from "../types/kalshi";
 import { AxiosError } from "axios";
+
+const KALSHI_ORIGIN = "https://api.elections.kalshi.com";
+
+function toAbsoluteImageUrl(url: string | undefined): string | undefined {
+  if (!url || typeof url !== "string") return undefined;
+  const trimmed = url.trim();
+  if (!trimmed) return undefined;
+  if (trimmed.startsWith("http://") || trimmed.startsWith("https://"))
+    return trimmed;
+  return `${KALSHI_ORIGIN}${trimmed.startsWith("/") ? "" : "/"}${trimmed}`;
+}
 
 const router = Router();
 
-// GET /api/markets — Fetch all markets (with optional filters)
+// GET /api/markets — Fetch all markets (with optional filters), enriched with image_url from event metadata
 router.get("/", async (req: Request, res: Response) => {
   try {
     const {
@@ -37,12 +50,50 @@ router.get("/", async (req: Request, res: Response) => {
     if (mve_filter) params.mve_filter = mve_filter as MarketParams["mve_filter"];
 
     const data = await getMarkets(params);
+    const markets: Market[] = data.markets || [];
+
+    const eventTickers = [
+      ...new Set(
+        markets
+          .map((m) => m.event_ticker)
+          .filter((t): t is string => Boolean(t)),
+      ),
+    ].slice(0, 20);
+
+    const metadataByEvent: Record<
+      string,
+      { image_url: string; market_details?: { market_ticker: string; image_url: string }[] }
+    > = {};
+    await Promise.all(
+      eventTickers.map(async (et) => {
+        try {
+          const meta = await getEventMetadata(et);
+          metadataByEvent[et] = {
+            image_url: meta.image_url,
+            market_details: meta.market_details,
+          };
+        } catch {
+          // ignore per-event metadata failure
+        }
+      }),
+    );
+
+    const enriched = markets.map((m) => {
+      const meta = m.event_ticker ? metadataByEvent[m.event_ticker] : undefined;
+      const marketImage = meta?.market_details?.find(
+        (d) => d.market_ticker === m.ticker,
+      )?.image_url;
+      const imageUrl =
+        toAbsoluteImageUrl(marketImage) ??
+        toAbsoluteImageUrl(meta?.image_url);
+      return { ...m, image_url: imageUrl };
+    });
 
     res.json({
       success: true,
-      data: data.markets,
+      data: enriched,
       cursor: data.cursor || null,
-      count: data.markets ? data.markets.length : 0,
+      count: enriched.length,
     });
   } catch (err) {
     const error = err as AxiosError<{ message?: string }>;
@@ -119,15 +170,30 @@ router.get("/:ticker/candlesticks", async (req: Request, res: Response) => {
   }
 });
 
-// GET /api/markets/:ticker — Fetch a single market by ticker
+// GET /api/markets/:ticker — Fetch a single market by ticker (with image_url from event metadata)
 router.get("/:ticker", async (req: Request, res: Response) => {
   try {
     const { ticker } = req.params;
     const data = await getMarket(ticker as string);
+    const market = data.market;
+
+    let image_url: string | undefined;
+    if (market.event_ticker) {
+      try {
+        const meta = await getEventMetadata(market.event_ticker);
+        const marketImage = meta.market_details?.find(
+          (d) => d.market_ticker === market.ticker,
+        )?.image_url;
+        image_url =
+          toAbsoluteImageUrl(marketImage) ?? toAbsoluteImageUrl(meta.image_url);
+      } catch {
+        // ignore metadata failure
+      }
+    }
 
     res.json({
       success: true,
-      data: data.market,
+      data: { ...market, image_url },
     });
   } catch (err) {
     const error = err as AxiosError<{ message?: string }>;

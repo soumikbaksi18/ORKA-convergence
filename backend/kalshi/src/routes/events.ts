@@ -1,9 +1,31 @@
 import { Router, Request, Response } from "express";
-import { getEvents, getEvent } from "../services/kalshiClient";
+import { getEvents, getEvent, getEventMetadata } from "../services/kalshiClient";
 import { EventParams } from "../types/kalshi";
 import { AxiosError } from "axios";
 
 const router = Router();
+
+// GET /api/events/:event_ticker/metadata — Event metadata (e.g. image_url)
+router.get("/:event_ticker/metadata", async (req: Request, res: Response) => {
+  try {
+    const { event_ticker } = req.params;
+    const data = await getEventMetadata(event_ticker as string);
+    res.json({
+      success: true,
+      ...data,
+    });
+  } catch (err) {
+    const error = err as AxiosError<{ message?: string }>;
+    console.error(
+      `Error fetching event metadata ${req.params.event_ticker}:`,
+      error.message,
+    );
+    res.status(error.response?.status || 500).json({
+      success: false,
+      error: error.response?.data?.message || error.message,
+    });
+  }
+});
 
 // GET /api/events — Fetch all events (categories of markets)
 router.get("/", async (req: Request, res: Response) => {

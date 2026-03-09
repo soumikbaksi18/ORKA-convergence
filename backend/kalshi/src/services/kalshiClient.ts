@@ -19,6 +19,7 @@ import {
   OrdersResponse,
   CancelOrderResponse,
   BatchCreateOrdersResponse,
+  GetEventMetadataResponse,
 } from "../types/kalshi";
 
 // ── Configuration ──
@@ -140,6 +141,15 @@ export async function getEvent(
   return kalshiRequest<EventResponse>("GET", `/events/${eventTicker}`, {
     params: { with_nested_markets: withNestedMarkets },
   });
+}
+
+export async function getEventMetadata(
+  eventTicker: string
+): Promise<GetEventMetadataResponse> {
+  return kalshiRequest<GetEventMetadataResponse>(
+    "GET",
+    `/events/${eventTicker}/metadata`
+  );
 }
 
 export async function getSeries(

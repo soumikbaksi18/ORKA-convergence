@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import type { Market } from "@/types/markets";
 import {
@@ -11,6 +14,37 @@ import {
   getMarketTitle,
   getExpiration,
 } from "@/lib/api/kalshi";
+
+function MarketThumbnail({
+  imageUrl,
+  title,
+}: {
+  imageUrl?: string | null;
+  title: string;
+}) {
+  const [failed, setFailed] = useState(false);
+  const showImage = imageUrl && !failed;
+
+  return (
+    <div className="mt-0.5 h-9 w-9 shrink-0 overflow-hidden rounded bg-white/10">
+      {showImage ? (
+        <img
+          src={imageUrl}
+          alt=""
+          className="h-full w-full object-cover"
+          onError={() => setFailed(true)}
+        />
+      ) : (
+        <div
+          className="flex h-full w-full items-center justify-center text-xs font-medium text-zinc-500"
+          title={title}
+        >
+          {title.charAt(0).toUpperCase() || "?"}
+        </div>
+      )}
+    </div>
+  );
+}
 
 function formatCents(c: number) {
   return `${c}\u00A2`;
@@ -113,7 +147,7 @@ export function MarketsTable({ markets, isLoading }: MarketsTableProps) {
                     }
                     className="flex items-start gap-3"
                   >
-                    <div className="mt-0.5 h-9 w-9 shrink-0 rounded bg-white/10" />
+                    <MarketThumbnail imageUrl={m.image_url} title={title} />
                     <div>
                       <p className="font-medium text-white hover:text-purple-300">
                         {title}
